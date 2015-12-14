@@ -1,0 +1,313 @@
+{% extends '__base__.html' %}
+
+{% block title %}主页{% endblock %}
+
+{% block js %}
+
+<!-- 通知 -->
+<script src="{{ url_for('static', filename='js/jquery.bootstrap-growl.js') }}">
+</script>
+
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+
+    <!-- 消息提示 -->
+    <script type="text/javascript">
+
+        $(function() {
+
+          setTimeout(function() {
+              $.bootstrapGrowl("<a href='/map/103.593302/30.332618'>收到一条急救消息</a>", { type: 'danger' });
+          }, 1000);
+            
+        });
+
+    </script>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" class="img-responsive img-rounded" alt="Responsive image"></div>
+      <div class="col-sm-4">
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active">
+            <a href="#">综合</a>
+          </li>
+          <li role="presentation">
+            <a href="#">医院</a>
+          </li>
+          <li role="presentation">
+            <a href="#">科室</a>
+          </li>
+          <li role="presentation">
+            <a href="#">专家</a>
+          </li>
+          <li role="presentation">
+            <a href="#">知识库</a>
+          </li>
+        </ul>
+        <div class="row">
+
+          <div class="col-sm-9">
+            <input type="text" class="form-control" placeholder="Search..."></div>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-primary">搜索</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="col-sm-3" style="border-right:1px dashed #AAAAAA;">
+          <img src="{{ url_for('static', filename='img/i2.png') }}" class="img-responsive" alt="Responsive image">
+          <center style="color:#FF8800">急救接诊</center>
+        </div>
+        <div class="col-sm-3" style="border-right:1px dashed #AAAAAA;">
+          <img src="{{ url_for('static', filename='img/i3.png') }}" class="img-responsive" alt="Responsive image">
+          <center style="color:#FF8800">健康档案</center>
+        </div>
+        <div class="col-sm-3" style="border-right:1px dashed #AAAAAA;">
+          <img src="{{ url_for('static', filename='img/i1.png') }}" class="img-responsive" alt="Responsive image">
+          <center style="color:#FF8800">预约就诊</center>
+        </div>
+        <div class="col-sm-3" style="border-right:1px dashed #AAAAAA;">
+          <img src="{{ url_for('static', filename='img/i4.png') }}" class="img-responsive" alt="Responsive image">
+          <center style="color:#FF8800">手机版</center>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading" style="color:white">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="{{ url_for('static', filename='img/doctor.png') }}" class="img-responsive" alt="Responsive image"></div>
+            <div class="col-sm-5">
+              <h3>医生入口</h3>
+            </div>
+            <br>
+            <br>
+            <span class="text-muted text-right" style="color:white" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{{ url_for('login') }}" style="color:white;">登陆</a> | 注册</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-success">
+        <!-- Default panel contents -->
+        <div class="panel-heading" style="color:white">
+          <div class="row">
+            <div class="col-sm-3">
+              <img src="{{ url_for('static', filename='img/patient.png') }}" class="img-responsive" alt="Responsive image"></div>
+            <div class="col-sm-5">
+              <h3 style="color:black">病友入口</h3>
+            </div>
+            <br>
+            <br>
+            <span class="text-muted text-right" style="color:black" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{{ url_for('login') }}" style="color:black;">登陆</a> | 注册</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading" style="color:#0082C1">
+          最新出诊/停诊预报 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp更多>>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+          <tr>
+            <td>华西医院</td>
+          </tr>
+          <tr>
+            <td>省人民医院</td>
+          </tr>
+          <tr>
+            <td>省中医院</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading" style="color:#0082C1">权威专家观点</div>
+
+        <!-- Table -->
+        <table class="table">
+          <tr>
+            <td>上海医院心血管疾病直通车</td>
+          </tr>
+          <tr>
+            <td>得了冠心病，用药解决就行了吗？</td>
+          </tr>
+          <tr>
+            <td>心绞痛，你该怎么办？</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading" style="color:#0082C1">最新专家文章</div>
+
+        <!-- Table -->
+        <table class="table">
+          <tr>
+            <td>如何应对间歇性早搏</td>
+          </tr>
+          <tr>
+            <td>一种冠心病治疗新方法</td>
+          </tr>
+          <tr>
+            <td>心绞痛，你该怎么办？</td>
+          </tr>
+          <tr>
+            <td>心肌梗死突发，如何急救？</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="panel panel-info">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h4>预约就诊</h4>
+        </div>
+        <div class="panel-body">
+          <h5>按疾病</h5>
+          <hr>
+          <div class="col-sm-6">
+            <div class="col-sm-3"> <b>心动过速:</b>
+            </div>
+            <div class="col-sm-3 ">张伟</div>
+            <div class="col-sm-3">王伟</div>
+            <div class="col-sm-3">王芳</div>
+            <div class="col-sm-3">
+              <a href="">更多>></a>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="col-sm-3"> <b>心动过缓:</b>
+            </div>
+            <div class="col-sm-3">李伟</div>
+            <div class="col-sm-3">李娜</div>
+            <div class="col-sm-3">张敏</div>
+            <div class="col-sm-3">
+              <a href="">更多>></a>
+            </div>
+          </div>
+          <hr>
+          <br>
+          <br>
+          <div class="col-sm-6">
+            <div class="col-sm-3">
+              <b>心律不齐:</b>
+            </div>
+            <div class="col-sm-3">李静</div>
+            <div class="col-sm-3">王静</div>
+            <div class="col-sm-3">刘伟</div>
+            <div class="col-sm-3">
+              <a href="">更多>></a>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="col-sm-3">
+              <b>长间歇:</b>
+            </div>
+            <div class="col-sm-3">王秀英</div>
+            <div class="col-sm-3">吴资龙</div>
+            <div class="col-sm-3">蒋进如</div>
+            <div class="col-sm-3 col-md-offset-3">
+              <a href="">更多>></a>
+            </div>
+          </div>
+          <hr>
+          <br>
+          <div class="col-sm-6">
+            <div class="col-sm-3">
+              <b>成对室性早搏:</b>
+            </div>
+            <div class="col-sm-3">秦树琪</div>
+            <div class="col-sm-3">梁尉寒</div>
+            <div class="col-sm-3">吴军卓</div>
+            <div class="col-sm-3">
+              <a href="">更多>></a>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="col-sm-3">
+              <b>其他:</b>
+            </div>
+            <div class="col-sm-3">李具匡</div>
+            <div class="col-sm-3">穆中管</div>
+            <div class="col-sm-3">谢雄民</div>
+            <div class="col-sm-3 col-sm-offset-3">
+              <a href="">更多>></a>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <h5>按医院</h5>
+          <hr>
+          <ul class="nav nav-tabs">
+            <li role="presentation">
+              <a href="#">北京</a>
+            </li>
+            <li role="presentation">
+              <a href="#">上海</a>
+            </li>
+            <li role="presentation">
+              <a href="#">广东</a>
+            </li>
+            <li role="presentation" class="active">
+              <a href="#">四川</a>
+            </li>
+            <li role="presentation">
+              <a href="#">山东</a>
+            </li>
+            <li role="presentation">
+              <a href="#">江苏</a>
+            </li>
+            <li role="presentation">
+              <a href="#">湖北</a>
+            </li>
+            <li role="presentation">
+              <a href="#">湖南</a>
+            </li>
+          </ul>
+          <div class="panel panel-default">
+            <div class="panel-body" style="background:#F5F5F5">
+              <div class="col-sm-3">华西医院(1211)</div>
+              <div class="col-sm-3">省人民医院(978)</div>
+              <div class="col-sm-3">省中医院(510)</div>
+              <div class="col-sm-3">华西妇儿医院(241)</div>
+              <br>
+              <br>
+              <div class="col-sm-3">华西口腔医院(238)</div>
+              <div class="col-sm-3">泸医附院(438)</div>
+              <div class="col-sm-3">成都妇产科医院(295)</div>
+              <div class="col-sm-3">成都军总医院(440)</div>
+              <br>
+              <br>
+              <div class="col-sm-3">绵阳中心医院(300)</div>
+              <div class="col-sm-3">成都第一医院(244)</div>
+              <div class="col-sm-3">省肿瘤医院(204)</div>
+              <div class="col-sm-3">成都第三医院(297)</div>
+              <br>
+              <br>
+              <div class="col-sm-3">省妇幼保健院(79)</div>
+              <div class="col-sm-3">
+                <a href="">更多>></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}
