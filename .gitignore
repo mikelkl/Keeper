@@ -1,5 +1,6 @@
 # My configurations:
 flask
+db_repository
 search.db
 app.db
 test.db
