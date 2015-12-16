@@ -32,8 +32,6 @@
 
     <div class="container">
 
-      {% include 'flash.html' %}
-
       <form action="{{ url_for('login') }}" method="post" class="form-signin">
         <h1 class="form-signin-heading text-center">Keeper</h1>
         <label for="inputEmail" class="sr-only">Email 地址</label>
@@ -42,7 +40,7 @@
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> 记住我
+            <input type="checkbox" name="remember_me" value="True"> 记住我
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
@@ -50,11 +48,7 @@
 
     </div> <!-- /container -->
 
-    <footer class="footer">
-      <div class="container text-center">
-        <p class="text-muted">Power by <a href="#">Hammer 团队</a>. Copyright &copy; 2015. </p>
-      </div>
-    </footer>
+    {% include 'footer.html' %}
 
   </body>
 </html>

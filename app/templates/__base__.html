@@ -51,21 +51,22 @@
       <div id="navbar" class="navbar-collapse collapse">
         
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span style="color:white;">注销</span></a></li>
+          <li>
+          {% if g.user.is_authenticated %}
+          <a href="{{ url_for('logout') }}" style="color:white;">Logout</a>
+          {% endif %}
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+
   <!-- content -->
   {% block content %}
   {% endblock %}
   <!-- // content -->
 
-  <footer class="footer">
-    <div class="container text-center">
-      <p class="text-muted">Power by <a href="#">Hammer 团队</a>. Copyright &copy; 2015. </p>
-    </div>
-  </footer>
+  {% include 'footer.html' %}
 
 </body>
 </html>
