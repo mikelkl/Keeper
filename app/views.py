@@ -39,8 +39,9 @@ def login():
                 login_user(user, remember=remember_me)
                 return redirect(url_for('index'))
         except KeyError:
-            # flash 有bug
-            flash('error!')
+            # flash 有bug, 无法显示中文（已修复）
+            flash('用户名或密码错误！请重新输入！')
+            # flash('Invalid login. Please try again.')
             return redirect(url_for('login'))
 
     return render_template('login.html')
