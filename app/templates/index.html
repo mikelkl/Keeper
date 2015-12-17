@@ -2,6 +2,21 @@
 
 {% block title %}主页{% endblock %}
 
+{% block css %}
+
+<link href="{{ url_for('static', filename='css/cover.css') }}" rel="stylesheet">
+
+<style>
+  body{
+    padding-top:  0px;
+  }
+  .footer {
+  position: relative;
+  }
+</style>
+
+{% endblock %}
+
 {% block js %}
 
 <!-- 通知 -->
@@ -11,6 +26,41 @@
 {% endblock %}
 
 {% block content %}
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Keeper</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">主页</a></li>
+                  <li><a href="#">新特性</a></li>
+                  <li><a href="#">联系我们</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Keeper心电采集仪</h1>
+            <p class="lead">一款通过手指按压戒电击贴片的方式从人体获取心电信号的硬件设备，设备通过蓝牙模块将采集数据输出</p>
+            <p class="lead">
+              <a href="#" class="btn btn-lg btn-default">下载App >></a>
+            </p>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
   <div class="container">
 
     <!-- 消息提示 -->
@@ -25,6 +75,8 @@
         });
 
     </script>
+
+    {% include 'flash.html' %} 
 
     <div class="row">
       <div class="col-sm-4">

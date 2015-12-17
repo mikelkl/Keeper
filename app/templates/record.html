@@ -1,0 +1,105 @@
+{% extends '__base__.html' %}
+
+{% block title %}个人档案{% endblock %}
+
+{% block content %}
+  {% include 'navbar.html' %}
+
+  <div class="container-fluid">
+    <div class="row" id="s">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li><a href="#">北京市</a></li>
+          <li><a href="#">上海市</a></li>
+          <li><a href="#">广东省</a></li>
+          <li><a href="#">江苏省</a></li>
+          <li><a href="#">四川省</a></li>
+          <ul>
+            <li><a href="#">成都市</a></li>
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#"四川大学>华西医院 </a></li>
+              <li><a href="#">成都市第一人民医院</a></li>
+              <li><a href="#">成都市第二人民医院</a></li>
+              <li><a href="#">成都市第三人民医院</a></li>
+              <li><a href="#">核工业四一六医院</a></li>
+              <li><a href="#">四川省肿瘤医院</a></li>
+              <li><a href="#">双流第一人民医院</a></li>
+            </ul>
+            <li><a href="#">绵阳市</a></li><br>
+            <li><a href="#">德阳市</a></li><br>
+            <li><a href="#">泸州市</a></li><br>
+            <li><a href="#">达州市</a></li><br>
+            <li><a href="#">广安市</a></li><br>
+          </li>
+          </ul>
+          <li><a href="#">山东省</a></li>
+          <li><a href="#">浙江省</a></li>
+          <li><a href="#">湖北省</a></li>
+          <li><a href="#">云南省</a></li>
+          <li><a href="#">重庆市</a></li>
+        </ul>
+       </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">健康档案
+          <form class="navbar-right">
+            <input type="text" class="form-control" placeholder="病情搜索...">
+          </form>
+        </h1>
+
+
+        <div class="row placeholders">
+          <div class="col-sm-6 placeholder">
+            <h2>心律失常</h2>
+            <span class="text-muted">3例</span>
+          </div>
+          <div class="col-sm-6 placeholder">
+            <h2>单发室上性早搏</h2>
+            <span class="text-muted">1例</span>
+          </div>
+        </div>
+
+        <h2 class="sub-header">诊断结果</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>就诊时间</th>
+                <th>医生签名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>刘飞</td>
+                <td>男</td>
+                <td>62</td>
+                <td>2013年11月21日</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td class='col-md-1'>临床诊断:</td>
+                <td>发作间歇期体检应着重于有无高血压、冠心病、瓣膜病、心肌病、心肌炎等器质性心脏病的证据。常规心电图、超声心动图、心电图运动负荷试验、放射性核素显影、心血管造影等无创和有创性检查有助于确诊或排除器质性心脏病。</td>
+              </tr>
+              <tr>
+                <td class='col-md-1'>医生意见:</td>
+                <td>心律失常的生活调理方法可以根据心律失常的诱因制定。心律失常的常见诱因有：吸烟、酗酒、过劳、紧张、激动、暴饮暴食，消化不良，感冒发烧，摄入盐过多，血钾、血镁低等。这样可以做到从本质出发，从根本上对心律失常引起的病症起到控制的作用。首先，在饮食的方面：应该细嚼慢咽，这样也有助于消化吸收，对健康有益，忌狼吞虎咽。应该少饮酒，这样不会加重心脏负担，也不会增加心肌耗氧量，喝咖啡也忌大量。其次，在运动方面：运动要适量，切不可挑战极限，多做适合自己的运动，轻松舒缓的运动，少做剧烈运动。再次，在情绪方面：要学会控制自己的情绪，尽量保持平和稳定的心态，不焦不躁，遇事懂得宽慰自己，不看过激的比赛等。
+                因此，为了减少或避免心律失常的发生，应当注意加强生活中饮食、运动、情绪等方面的调节与护理。更多关于诱发心律失常的生活细节请咨询我们的在线专家。</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div class="col-md-offset-10">
+            附件：<button type="button" class="btn btn-primary">心电图数据</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
