@@ -1,6 +1,7 @@
 # My configurations:
 flask
 db_repository
+app/static/uploads
 search.db
 app.db
 test.db
