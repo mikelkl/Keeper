@@ -36,7 +36,7 @@ def login():
         if user is None:
             flash('用户名或密码错误！请重新输入！')
             return redirect(url_for('login'))
-            
+
         remember_me = False
         if request.form.get('remember_me'):
             remember_me = True
@@ -82,34 +82,15 @@ def doctor():
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
-    pass
-    # if form.validate_on_submit():
-    #     g.user.nickname = form.nickname.data
-    #     g.user.about_me = form.about_me.data
-    #     db.session.add(g.user)
-    #     db.session.commit()
-    #     flash('Your changes have been saved.')
-    #     return redirect(url_for('edit'))
-    # else:
-    #     form.nickname.data = g.user.nickname
-    #     form.about_me.data = g.user.about_me
-    # return render_template('edit.html', form=form)
+    if request.method == 'POST':
+        if request.form.get('nickname'):
+            g.user.nickname = request.form.get('nickname')
+        if request.form.get('about_me'):
+            g.user.about_me = request.form.get('about_me')
+            
+        db.session.add(g.user)
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit'))
 
-    # if request.method == 'POST':
-    #     try:
-    #         g.user.nickname = request.form['nickname']
-    #         try:
-    #             g.user.about_me = request.form['about_me']
-    #             db.session.add(g.user)
-    #             db.session.commit()
-    #             flash('Your changes have been saved.')
-    #             return redirect(url_for('edit'))
-    #         except:
-
-    #     except KeyError:
-    #         remember_me = False
-    #     finally:
-    #         login_user(user, remember=remember_me)
-    #         return redirect(url_for('doctor'))
-
-    # return render_template('login.html')
+    return render_template('edit.html')

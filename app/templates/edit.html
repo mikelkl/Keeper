@@ -1,0 +1,37 @@
+{% extends "__base__.html" %}
+
+{% block title %}编辑{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="col-md-offset-4">编辑您的个人资料</h1>
+        {% include 'navbar.html' %}
+        {% include 'flash.html' %}
+        <div class="row">
+            <div class="well col-md-4 col-md-offset-4">
+                <form class="form-horizontal" action="{{ url_for('edit') }}" method="post">
+                    <div class="control-group col-md-8 col-md-offset-2">
+                        <label class="control-label" for="nickname">昵称：</label>
+                        <div class="controls">
+                            <input type="text" name="nickname" id="nickname" class="form-control" placeholder="输入新的昵称">
+                            <span class="help-inline">{{ error }}</span><br>
+                        </div>
+                    </div>
+                    <div class="control-group col-md-8 col-md-offset-2">
+                        <label class="control-label" for="about_me">关于你：</label>
+                        <div class="controls">
+                        <input type="text" name="about_me" id="about_me" class="form-control" class="span4" cols=64, rows=4>
+                        <span class="help-inline">{{ error }}</span><br>
+                        </div>
+                    </div>
+                    <div class="control-group col-md-offset-4">
+                        <div class="controls">
+                            <input class="btn btn-primary" type="submit" value="保存修改">
+                        </div>
+                    </div>
+                </form>
+            </div>                
+        </div>
+
+    </div>
+{% endblock %}
