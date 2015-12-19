@@ -7,6 +7,9 @@ class User(db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password = db.Column(db.String(20), index=True, unique=False)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime)
+    avatar = db.Column(db.String(40))
 
     def is_authenticated(self):
         return True
