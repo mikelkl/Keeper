@@ -29,7 +29,8 @@ def index():
 def login():
     # 若用户已登录，重定向到index
     if g.user is not None and g.user.is_authenticated:
-        return redirect(url_for('index'))
+        flash('请勿重复登录！')
+        # return redirect(url_for('index'))
 
     # 若用户未登录，重定向到index
     if request.method == 'POST':
@@ -99,7 +100,7 @@ def edit():
 
         db.session.add(g.user)
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash('您的修改已保存！')
         return redirect(url_for('edit'))
 
     return render_template('edit.html')
