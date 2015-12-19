@@ -4,17 +4,22 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app, db, lm
 from .models import User
+from datetime import datetime
+
+
+@app.before_request
+def before_request():
+    g.user = current_user
+    if g.user.is_authenticated:
+        g.user.last_seen = datetime.utcnow()
+        db.session.add(g.user)
+        db.session.commit()
 
 
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html')
-
-
-@app.before_request
-def before_request():
-    g.user = current_user
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -25,25 +30,19 @@ def login():
 
     # 若用户未登录，重定向到index
     if request.method == 'POST':
-        try:
-            user = User.query.filter_by(email=request.form['email'], password=request.form['password']).first()
-            print user
-            if user is None:
-                raise KeyError
-            try:
-                request.form['remember_me']
-                remember_me = True
-            except KeyError:
-                remember_me = False
-            finally:
-                login_user(user, remember=remember_me)
-                return redirect(url_for('index'))
-        except KeyError:
-            # flash 有bug, 无法显示中文（已修复）
+        user = User.query.filter_by(
+            email=request.form.get('email'), password=request.form.get('password')).first()
+        # print user
+        if user is None:
             flash('用户名或密码错误！请重新输入！')
-            # flash('Invalid login. Please try again.')
             return redirect(url_for('login'))
-    # login_user(user, remember=remember_me)
+            
+        remember_me = False
+        if request.form.get('remember_me'):
+            remember_me = True
+        login_user(user, remember=remember_me)
+        return redirect(url_for('doctor'))
+
     return render_template('login.html')
 
 
@@ -68,3 +67,49 @@ def map(jd=None, wd=None):
 @login_required
 def record():
     return render_template('record.html')
+
+
+@app.route('/doctor')
+@login_required
+def doctor():
+    if g.user == None:
+        flash('User ' + g.nickname + ' not found.')
+        return redirect(url_for('index'))
+    return render_template('doctor.html',
+                           user=g.user)
+
+
+@app.route('/edit', methods=['GET', 'POST'])
+@login_required
+def edit():
+    pass
+    # if form.validate_on_submit():
+    #     g.user.nickname = form.nickname.data
+    #     g.user.about_me = form.about_me.data
+    #     db.session.add(g.user)
+    #     db.session.commit()
+    #     flash('Your changes have been saved.')
+    #     return redirect(url_for('edit'))
+    # else:
+    #     form.nickname.data = g.user.nickname
+    #     form.about_me.data = g.user.about_me
+    # return render_template('edit.html', form=form)
+
+    # if request.method == 'POST':
+    #     try:
+    #         g.user.nickname = request.form['nickname']
+    #         try:
+    #             g.user.about_me = request.form['about_me']
+    #             db.session.add(g.user)
+    #             db.session.commit()
+    #             flash('Your changes have been saved.')
+    #             return redirect(url_for('edit'))
+    #         except:
+
+    #     except KeyError:
+    #         remember_me = False
+    #     finally:
+    #         login_user(user, remember=remember_me)
+    #         return redirect(url_for('doctor'))
+
+    # return render_template('login.html')
