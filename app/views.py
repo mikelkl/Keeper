@@ -5,6 +5,9 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from app import app, db, lm
 from .models import User
 from datetime import datetime
+from config import UPLOAD_FOLDER, ALLOWED_EXTENSIONS
+from werkzeug import secure_filename
+import os
 
 
 @app.before_request
@@ -87,10 +90,21 @@ def edit():
             g.user.nickname = request.form.get('nickname')
         if request.form.get('about_me'):
             g.user.about_me = request.form.get('about_me')
-            
+        avatar = request.files.get('avatar')
+        if avatar and allowed_file(avatar.filename):
+            avatar_name = unicode(g.user.id) + '.' + avatar.filename.rsplit('.', 1)[1]
+            # avatar_url = os.path.join(UPLOAD_FOLDER, avatar_name)
+            avatar.save( UPLOAD_FOLDER + '/' + avatar_name)
+            g.user.avatar = avatar_name
+
         db.session.add(g.user)
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('edit'))
 
     return render_template('edit.html')
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
