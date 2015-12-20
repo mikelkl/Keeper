@@ -2,7 +2,7 @@
 flask
 db_repository
 app/static/uploads
-search.db
+tmp
 app.db
 test.db
 private_config.py
