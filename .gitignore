@@ -4,6 +4,7 @@ db_repository
 app/static/uploads
 tmp
 app.db
+test.db
 private_config.py
 
 # Windows:
