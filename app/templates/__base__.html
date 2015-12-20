@@ -17,6 +17,24 @@
   <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
 
+  <!-- Bootstrap core JavaScript
+      ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+  <style>
+    .navbar-default .navbar-nav > li > a:hover  {
+      background-color: #0482ba;
+    }
+    .nav > li:hover .dropdown-menu {display: block;} 
+  </style>
+
+  <script>    
+    $(document).ready(function(){
+        $(document).off('click.bs.dropdown.data-api');
+    });
+  </script>
 
   {% block css %}<!-- block css  -->{% endblock %}
 
@@ -32,10 +50,5 @@
 
   {% include 'footer.html' %}
 
-  <!-- Bootstrap core JavaScript
-      ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </body>
 </html>

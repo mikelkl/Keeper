@@ -109,3 +109,10 @@ def edit():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+# @app.route('/upload', methods=['GET', 'POST'])
+# def upload():
+#     if request.method == 'POST':
+#         file = request.files.get('')
+#         if file:
+#             file.save( 'app/static/uploads/avatars/' + file.filename)
