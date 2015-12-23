@@ -8,14 +8,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><b style="color:white;">Keeper----在线心电医疗平台</b></a>
+      <a class="navbar-brand" href="{{ url_for('index') }}"><b style="color:white;">Keeper----在线心电医疗平台</b></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       
       <ul class="nav navbar-nav navbar-right">
         {% if g.user.is_authenticated %}
         <li class="dropdown">
-          <a href="{{ url_for('doctor') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white;"><img src="static/uploads/avatars/{{ g.user.avatar }}" style="width:25px;height:25px" class="img-rounded">{{ g.user.nickname }} <span class="caret"></span></a>
+          <a href="{{ url_for('doctor') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:white;"><img src="" style="width:25px;height:25px" class="img-rounded">{{ g.user.nickname }} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{ url_for('doctor') }}">个人资料</a></li>
             <li class="divider" style="color:black;"></li>
