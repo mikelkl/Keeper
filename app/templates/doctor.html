@@ -7,7 +7,7 @@
     {% include 'flash.html' %}
     <div class="well well-large">
         <div class="pull-left">
-            <img src="static/uploads/avatars/{{ user.avatar }}" style="width:100px;height:100px" class="img-circle">
+            <img src="static/uploads/avatars/{{ user.avatar }}" style="width:100px;height:100px" class="img-rounded">
         </div><br><br><br><br><br><br>
         <h1>{{ user.nickname }}</h1>
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}

@@ -36,13 +36,14 @@ def login():
     if request.method == 'POST':
         user = User.query.filter_by(
             email=request.form.get('email'), password=request.form.get('password')).first()
-        # print user
+        
         if user is None:
             flash('用户名或密码错误！请重新输入！')
             return redirect(url_for('login'))
 
         remember_me = False
         if request.form.get('remember_me'):
+            # print request.form.get('remember_me')
             remember_me = True
         login_user(user, remember=remember_me)
         return redirect(url_for('doctor'))
