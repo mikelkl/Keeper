@@ -17,14 +17,6 @@
 
 {% endblock %}
 
-{% block js %}
-
-<!-- 通知 -->
-<script src="{{ url_for('static', filename='js/jquery.bootstrap-growl.js') }}">
-</script>
-
-{% endblock %}
-
 {% block content %}
 
     <div class="site-wrapper">
@@ -62,19 +54,6 @@
     </div>
 
   <div class="container" style="padding-top:15px">
-
-    <!-- 消息提示 -->
-    <script type="text/javascript">
-
-        $(function() {
-
-          setTimeout(function() {
-              $.bootstrapGrowl("<a href='/map/103.593302/30.332618'>收到一条急救消息</a>", { type: 'danger' });
-          }, 1000);
-            
-        });
-
-    </script>
 
     {% include 'flash.html' %} 
 
@@ -361,5 +340,26 @@
     </div>
 
   </div>
+
+{% endblock %}
+
+{% block js %}
+
+<!-- 通知 -->
+<script src="{{ url_for('static', filename='js/jquery.bootstrap-growl.js') }}">
+</script>
+
+<!-- 消息提示 -->
+<script type="text/javascript">
+
+    $(function() {
+
+      setTimeout(function() {
+          $.bootstrapGrowl("<a href='/map/103.593302/30.332618'>收到一条急救消息</a>", { type: 'danger' });
+      }, 1000);
+        
+    });
+
+</script>
 
 {% endblock %}

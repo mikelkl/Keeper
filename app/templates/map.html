@@ -2,47 +2,6 @@
 
 {% block title %}个人档案{% endblock %}
 
-{% block js %}
-
-<!-- 百度地图api -->
-<script type="text/javascript">  
-function initialize() {  
-  var map = new BMap.Map('map');  
-  var point = new BMap.Point({{ jd }}, {{ wd }});
-  var marker = new BMap.Marker(point); // 创建点
-
-
-  // 百度地图API功能
-  var p1 = new BMap.Point(104.0704200000, 30.6473800000);
-  var p2 = new BMap.Point({{ jd }}, {{ wd }});
-
-  var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
-  driving.search(p1, p2);
-
-
-  // 坐标参数
-  map.centerAndZoom(point, 15);  
-
-  map.addOverlay(marker); 
-  map.addControl(new BMap.NavigationControl());
-  map.addControl(new BMap.ScaleControl());    
-  map.addControl(new BMap.OverviewMapControl());    
-  map.addControl(new BMap.MapTypeControl());  
-
-  var label = new BMap.Label("病人位置",{offset:new BMap.Size(-15,25)});
-  marker.setLabel(label);
-}  
-   
-function loadScript() {  
-  var script = document.createElement("script");  
-  script.src = "http://api.map.baidu.com/api?v=2.0&ak=jD80NNGOkZPEmG5Fugcaiyoa&callback=initialize";//此为v2.0版本的引用方式  
-  document.body.appendChild(script);  
-}  
-   
-window.onload = loadScript;  
-</script>
-{% endblock %}
-
 {% block content %}
   {% include 'navbar.html' %}
     <div class="container-fluid">
@@ -125,4 +84,45 @@ window.onload = loadScript;
       </div>
     </div>
 
+{% endblock %}
+
+{% block js %}
+
+<!-- 百度地图api -->
+<script type="text/javascript">  
+function initialize() {  
+  var map = new BMap.Map('map');  
+  var point = new BMap.Point({{ jd }}, {{ wd }});
+  var marker = new BMap.Marker(point); // 创建点
+
+
+  // 百度地图API功能
+  var p1 = new BMap.Point(104.0704200000, 30.6473800000);
+  var p2 = new BMap.Point({{ jd }}, {{ wd }});
+
+  var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+  driving.search(p1, p2);
+
+
+  // 坐标参数
+  map.centerAndZoom(point, 15);  
+
+  map.addOverlay(marker); 
+  map.addControl(new BMap.NavigationControl());
+  map.addControl(new BMap.ScaleControl());    
+  map.addControl(new BMap.OverviewMapControl());    
+  map.addControl(new BMap.MapTypeControl());  
+
+  var label = new BMap.Label("病人位置",{offset:new BMap.Size(-15,25)});
+  marker.setLabel(label);
+}  
+   
+function loadScript() {  
+  var script = document.createElement("script");  
+  script.src = "http://api.map.baidu.com/api?v=2.0&ak=jD80NNGOkZPEmG5Fugcaiyoa&callback=initialize";//此为v2.0版本的引用方式  
+  document.body.appendChild(script);  
+}  
+   
+window.onload = loadScript;  
+</script>
 {% endblock %}
