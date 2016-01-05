@@ -18,14 +18,14 @@
 {% endblock %}
 
 {% block content %}
-
+{% include 'navbar.html' %}
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
+<!--           <div id="header" class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">Keeper</h3>
               <nav>
@@ -36,7 +36,7 @@
                 </ul>
               </nav>
             </div>
-          </div>
+          </div> -->
 
           <div class="inner cover">
             <h1 class="cover-heading">Keeper心电采集仪</h1>
@@ -359,7 +359,6 @@
       }, 1000);
         
     });
-
 </script>
 
 {% endblock %}

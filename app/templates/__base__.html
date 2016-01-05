@@ -21,7 +21,10 @@
     .navbar-default .navbar-nav > li > a:hover  {
       background-color: #0482ba;
     }
-    .nav > li:hover .dropdown-menu {display: block;} 
+    .nav > li:hover .dropdown-menu {display: block;}
+    .headroom {position: fixed;top: 0;left: 0;right: 0;transition: all .5s ease-in-out;}
+    .headroom--unpinned {top: -100px;}
+    .headroom--pinned {top: 0;}
   </style>
 
   {% block css %}<!-- block css  -->{% endblock %}
@@ -42,6 +45,11 @@
   <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
+  <!-- 导航栏动画 -->
+  <script src="{{ url_for('static', filename='js/headroom.min.js') }}">
+  </script>
+
+
   <script>    
     $(document).ready(function(){
         $(document).off('click.bs.dropdown.data-api');
@@ -49,6 +57,14 @@
 
     // 修改头像
     $('#navbar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
+
+    // 添加导航栏动画
+    var elem = document.querySelector("nav");
+    var headroom = new Headroom(elem, {
+      "tolerance": 5,
+      "offset": 500,
+    });
+    headroom.init();
   </script>
 
   {% block js %}<!-- block JavaScript  -->{% endblock %}
