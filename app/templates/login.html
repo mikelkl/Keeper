@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo2.png') }}o">
 
     <title>登陆 - 在线心电医疗平台</title>
 
@@ -17,6 +17,19 @@
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
+
+    <style>
+      .login {
+          width:940px; 
+          height:768px;
+          background: transparent url("{{ url_for('static', filename='img/imac.png') }}") no-repeat;
+          color: #000;
+          margin-bottom: 77px;
+          padding: 38px 38px 267px;
+          position: relative;
+          margin: 0 auto;
+      }
+    </style>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -33,7 +46,9 @@
     <div class="container">
       
       {% include 'flash.html' %}  
-
+      <div class="login">
+      <div class="login-screen">
+      <div class="login-form">
       <form action="{{ url_for('login') }}" method="post" class="form-signin">
         <h1 class="form-signin-heading text-center">Keeper</h1>
         <label for="inputEmail" class="sr-only">Email 地址</label>
@@ -47,10 +62,11 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
       </form>
+      </div>
+      </div>
+      </div>
 
     </div> <!-- /container -->
-
     {% include 'footer.html' %}
-
   </body>
 </html>

@@ -7,14 +7,14 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <link rel="icon" href="{{ url_for('static', filename='img/logo2.png') }}">
   <title>{% block title %} ? {% endblock %} - 在线心电医疗平台</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
 
   <style>
@@ -44,27 +44,10 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
 
   <!-- 导航栏动画 -->
   <script src="{{ url_for('static', filename='js/headroom.min.js') }}">
-  </script>
-
-
-  <script>    
-    $(document).ready(function(){
-        $(document).off('click.bs.dropdown.data-api');
-    });
-
-    // 修改头像
-    $('#navbar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
-
-    // 添加导航栏动画
-    var elem = document.querySelector("nav");
-    var headroom = new Headroom(elem, {
-      "tolerance": 5,
-      "offset": 500,
-    });
-    headroom.init();
   </script>
 
   {% block js %}<!-- block JavaScript  -->{% endblock %}

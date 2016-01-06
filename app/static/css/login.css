@@ -3,6 +3,30 @@ body {
   padding-bottom: 40px;
   background-color: #eee;
 }
+.btn {
+    background-color: #1ABC9C;
+}
+.login {
+    width:940px; 
+    height:768px;
+    background: transparent url("{{ url_for('static', filename='img/imac.png') }}") no-repeat;
+    color: #000;
+    margin-bottom: 77px;
+    padding: 38px 38px 267px;
+    position: relative;
+    margin: 0 auto;
+}
+.login-screen {
+    background-color: #1ABC9C;
+    min-height: 317px;
+    padding: 123px 199px 33px 306px;
+}
+.login-form {
+    background-color: #ECEFF1;
+    border-radius: 6px;
+    padding: 24px 23px 20px;
+    position: relative;
+}
 
 .form-signin {
   max-width: 330px;
@@ -14,7 +38,7 @@ body {
   margin-bottom: 10px;
 }
 .form-signin-heading {
-  color: #0185DD;
+  color: #1ABC9C;
 }
 .form-signin .checkbox {
   font-weight: normal;
