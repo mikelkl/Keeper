@@ -18,7 +18,7 @@
   <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
 
   <style>
-    .navbar-default .navbar-nav > li > a:hover  {
+    .navbar-default .navbar-nav > li > a:hover {
       background-color: #0482ba;
     }
     .nav > li:hover .dropdown-menu {display: block;}
@@ -44,13 +44,28 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
-
   <!-- 导航栏动画 -->
-  <script src="{{ url_for('static', filename='js/headroom.min.js') }}">
+  <script src="{{ url_for('static', filename='js/headroom.min.js') }}"></script>
+  <script>
+    $(document).ready(function(){
+        $(document).off('click.bs.dropdown.data-api');
+    });
+
+    // 修改头像
+    $('#navbar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
+
+    // 添加导航栏动画
+    var elem = document.querySelector("nav");
+    var headroom = new Headroom(elem, {
+      "tolerance": 5,
+      "offset": 500,
+    });
+    headroom.init();
+
+    // 修改导航栏链接颜色
+    $('nav a').css('color', '#FFF');
+    $('ul.dropdown-menu a').css('color', '#000');
   </script>
-
   {% block js %}<!-- block JavaScript  -->{% endblock %}
-
 </body>
 </html>

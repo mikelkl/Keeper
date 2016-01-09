@@ -6,16 +6,6 @@ body {
 .btn {
     background-color: #1ABC9C;
 }
-.login {
-    width:940px; 
-    height:768px;
-    background: transparent url("{{ url_for('static', filename='img/imac.png') }}") no-repeat;
-    color: #000;
-    margin-bottom: 77px;
-    padding: 38px 38px 267px;
-    position: relative;
-    margin: 0 auto;
-}
 .login-screen {
     background-color: #1ABC9C;
     min-height: 317px;
