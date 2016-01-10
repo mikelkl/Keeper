@@ -56,8 +56,9 @@
             <h2>单发室上性早搏</h2>
             <span class="text-muted">1例</span>
           </div>
+          <div id="container" style="height: 489.73px;width:1044.17px;"></div>
         </div>
-
+        <h1 class="page-header" style="margin-top:100px;"></h1>
         <h2 class="sub-header">诊断结果</h2>
         <div class="table-responsive">
           <table class="table table-striped">
@@ -102,4 +103,31 @@
     </div>
   </div>
 
+{% endblock %}
+{% block js %}
+<!-- 画图 -->
+<script type="text/javascript" src="http://code.highcharts.com/stock/highstock.js"></script>
+<script type="text/javascript">
+    var chart = new Highcharts.Chart({
+
+        chart: {
+            renderTo: 'container',
+            type:'line',
+        },
+        title: {
+            text: '患者心电图'
+        },
+        xAxis:{
+            min:0,
+            max:10
+        },
+        //设置滚动条    
+        scrollbar: {
+            enabled: true
+        },
+        series: [{
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        }]
+    });
+</script>
 {% endblock %}
