@@ -8,19 +8,26 @@ body {
 }
 .login-screen {
     background-color: #1ABC9C;
-    min-height: 317px;
-    padding: 123px 199px 33px 306px;
+    height: 474px;
+    /*padding: 80px 199px 80px 306px;*/
+    padding-top: 80px;
+    padding-bottom: 80px;
+
 }
 .login-form {
     background-color: #ECEFF1;
     border-radius: 6px;
-    padding: 24px 23px 20px;
-    position: relative;
+    /*padding: 4px 23px 2px;*/
+    width: 359px;
+    height: 264px;
+    /*position: relative;*/
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .form-signin {
   max-width: 330px;
-  padding: 15px;
+  padding: 5px;
   margin: 0 auto;
 }
 .form-signin .form-signin-heading,
@@ -51,7 +58,7 @@ body {
   border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }

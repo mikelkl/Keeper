@@ -29,6 +29,13 @@
           position: relative;
           margin: 0 auto;
       }
+/*      .login-icon {
+          left: 200px;
+          position: absolute;
+          top: 117px;
+          width: 96px;
+          color: #FFF;
+      }*/
     </style>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -48,13 +55,23 @@
       {% include 'flash.html' %}  
       <div class="login">
       <div class="login-screen">
+<!--       <div class="login-icon">
+        <img src="{{ url_for('static', filename='img/logo3.png') }}" alt="Welcome to Mail App" width="96" height="96">
+        <h4>Welcome to <b>Keeper</b></h4>
+      </div> -->
       <div class="login-form">
       <form action="{{ url_for('login') }}" method="post" class="form-signin">
         <h1 class="form-signin-heading text-center">Keeper</h1>
-        <label for="inputEmail" class="sr-only">Email 地址</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email 地址" required autofocus>
-        <label for="inputPassword" class="sr-only">密码</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
+        <div class="input-group">
+          <label for="inputEmail" class="sr-only">Email 地址</label>
+          <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email 地址" required autofocus>
+          <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+        </div>
+        <div class="input-group">
+          <label for="inputPassword" class="sr-only">密码</label>
+          <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
+          <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></span>
+        </div>
         <div class="checkbox">
           <label>
             <input type="checkbox" name="remember_me"> 记住我
