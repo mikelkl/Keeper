@@ -355,7 +355,10 @@
     $(function() {
 
       setTimeout(function() {
-          $.bootstrapGrowl("<a href='/map/103.593302/30.332618'>收到一条急救消息</a>", { type: 'danger' });
+          $.bootstrapGrowl("<a href='/map/103.593302/30.332618'>收到一条急救消息</a>", { 
+            type: 'danger',
+            offset: {from: 'top', amount: 100}
+          });
       }, 1000);
         
     });
