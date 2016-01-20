@@ -62,10 +62,10 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/map/<jd>/<wd>')
+@app.route('/first_aid')
 @login_required
-def map(jd=None, wd=None):
-    return render_template('map.html', jd=jd, wd=wd)
+def first_aid():
+    return render_template('first_aid.html', jd=103.593302, wd=30.332618)
 
 
 @app.route('/record')
