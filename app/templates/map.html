@@ -8,7 +8,7 @@
       <div class="row" id="s">
         <div class="col-sm-3 col-md-2 sidebar">
           <h3 class="text-center">病人资料</h3>   <hr>
-          <center><img src="{{ url_for('static', filename='img/head.jpg') }}" style="width:100px;height:100px" class="img-circle" alt="Generic placeholder thumbnail">
+          <center><img src="" style="width:100px;height:100px" class="img-circle" alt="病人头像">
           </center>
           <br><p class="text-center">刘康龙</p>
             <table class="table">
@@ -124,5 +124,8 @@ function loadScript() {
 }  
    
 window.onload = loadScript;  
+
+// 修改头像
+$('div.sidebar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
 </script>
 {% endblock %}
