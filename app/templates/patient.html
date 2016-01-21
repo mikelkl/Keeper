@@ -1,0 +1,120 @@
+{% extends "__base__.html" %}
+
+{% block title %}{{ user.nickname }}{% endblock %}
+
+{% block css %}
+<style>
+    .well {
+        margin-top: 46px;
+    }
+    .well2 {
+        margin-top: 16px;
+    }
+    .col-md-8 {
+        background-color: #fff;
+    }
+    .name {
+        font-weight: 600;
+        font-size: 1.6em;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    .grey {
+        color: #8B8989;
+    }
+    .well-sm {
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+    .row > .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .follow {
+        border-right: 1px solid #BABABA;
+    }
+    .col-md-1 {
+        border-bottom: 1px solid #BABABA;
+
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    {% include 'flash.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="well well-lg col-md-8">
+                <p class="name">{{ user.nickname }}{% if user.about_me %}<span class="grey"> , {{ user.about_me }}</span>{% endif %}</p>
+                <div class="pull-left">
+                    <img src="static/uploads/avatars/{{ user.avatar }}" style="width:100px;height:100px" class="img-rounded">
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;成都&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;骨科&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <div class="pull-right">
+                {% if user.id == g.user.id %}
+                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>&nbsp;
+                <a href="{{url_for('edit')}}" >编辑您的个人资料</a>
+                {% endif %}
+                </div>
+                <br><br>
+                <h1 class="page-header"><br></h1>
+                <!-- 
+                <h1>{{ user.nickname }}</h1>
+                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %} -->
+                获得&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;1赞同&nbsp;&nbsp;<span class=" glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;10感谢
+                <div class="pull-right">
+                <button type="button" class="btn btn-success">关注ta</button>&nbsp;&nbsp;
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="well well-sm">
+                {% if user.last_seen %}
+                <p><em>最近登录：{{ user.last_seen }}</em></p>
+                {% endif %}
+                </div>
+                </p>
+            </div>  
+            <div class="col-md-1"></div>
+            <div class="well well-lg col-md-3">
+            Keeper心电采集仪是一款通过手指按压戒电击贴片的方式从人体获取心电信号的硬件设备，设备通过蓝牙模块将采集数据输出。
+            <div class="row">
+            <button type="button" class="btn btn-success col-md-12"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>&nbsp;&nbsp;Keeper-在线心电医疗平台</button>
+            </div>
+            <div class="row">
+            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>&nbsp;&nbsp;Keeper-在线心电医疗平台</button>
+            </div>
+            <div class="row">
+            <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp;&nbsp;Keeper-在线心电医疗平台</button>
+            </div>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="well well-lg col-md-8 well2">
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            asdf<br>
+            </div>
+            <div class="col-md-offset-1 col-md-1 follow">
+            <h4 class="grey">关注了</h4><h4><b>2</b>人</h4>
+            </div> 
+            <div class="col-md-1">
+            <h4 class="grey">关注者</h4><h4><b>0</b>人</h4>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

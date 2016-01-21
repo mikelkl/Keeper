@@ -1,0 +1,172 @@
+{% extends '__base__.html' %}
+
+{% block title %}就诊记录{% endblock %}
+
+{% block content %}
+  {% include 'navbar.html' %}
+    <div class="container-fluid">
+      <div class="row" id="s">
+        <div class="col-sm-3 col-md-3 sidebar">
+          <h3 class="text-center">病人资料</h3>   <hr>
+          <center><img src="" style="width:100px;height:100px" class="img-circle" alt="病人头像">
+          </center>
+          <br><p class="text-center">{{ g.user.nickname }}</p>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>年龄：{{ g.user.age }}</td>
+                </tr>
+                <tr>
+                  <td>性别：{{ g.user.sex }}</td>
+                </tr>
+                <tr>
+                  <td>身高：{{ g.user.height }}</td>
+                </tr>
+                <tr>
+                  <td>体重：{{ g.user.weight }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <hr>
+          <h3 class="text-center">就诊记录</h3><hr> 
+          <ul class="nav nav-sidebar nav-pills nav-stacked">
+            <li class="active"><a href="#more"><b>患者姓名：莫绪旻</b><br>就诊原因：心律不齐，脉搏絮乱，生活作息不规律<br><em>就诊日期：2015-11-24</em></a></li>
+            <li><a href="#more"><b>患者姓名：莫绪旻</b><br>就诊原因：窦性心率不齐，熬夜导致<br><em>就诊日期：2015-11-19</em></a></li>
+            <li><a href="#more"><b>患者姓名：刘康龙</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-15</em></a></li>
+            <li><a href="#more"><b>患者姓名：应俊康</b><br>就诊原因：心动过滤，遗传病，剧烈运动后更为明显<br><em>就诊日期：2015-11-11</em></a></li>
+            <li><a href="#more"><b>患者姓名：刘康龙</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-8</em></a></li>
+            <li><a href="#more"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-6</em></a></li>
+            <li><a href="#more"><b>患者姓名：莫绪旻</b><br>就诊原因：心律不齐，脉搏絮乱，生活作息不规律<br><em>就诊日期：2015-11-4</em></a></li>
+          </ul>
+          <!--           <h3 class="text-center">诊后随访</h3><hr> 
+          <ul class="nav nav-sidebar nav-pills nav-stacked">
+            <li class="active"><a href="#more">诊后第1次随访</a></li>
+            <li><a href="#">诊后第2次随访</a></li>
+            <li><a href="#">诊后第3次随访</a></li>
+            <li><a href="#">诊后第4次随访</a></li>
+          </ul> -->
+         </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 main">
+          <h1 class="title">乳酸脱氢酶走势</h1>
+          <h1 class="page-header"></h1>
+          <!-- 数据走势图 -->
+          <div id="container" style="height: 489.73px;width:100%;"></div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>检查项目</th>
+                  <th>单位</th>
+                  <th>正常范围</th>
+                  <th>历史最高</th>
+                  <th>历史最低</th>
+                  <th>最近一次</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>乳酸脱氢酶</td>
+                  <td>iu/L</td>
+                  <td>100-240</td>
+                  <td>280iu/L</td>
+                  <td>180iu/L</td>
+                  <td>190iu/L</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br><br><br><br><br><br>
+          <h1 id="more" class="title">就诊详情</h1>
+          <h1 class="page-header"></h1>
+          <br>
+          <div class="row placeholders">
+            <div class="col-sm-6 placeholder">
+              <h2>就诊日期</h2>
+              <span class="text-muted">2015-11-24</span>
+            </div>
+            <div class="col-sm-6 placeholder">
+              <h2>就诊医院</h2>
+              <span class="text-muted">四川大学华西医院</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header"></h2>
+          <div class="table-responsive">
+            <div class="col-sm-8 placeholder">       
+              <h3>病情诊断</h3>
+                  经过诊断，确定病人为窦性心律不齐,表现为心悸、胸闷、不适。P波规律出现，且P波形态表明激动来自窦房结（即P波在Ⅰ、Ⅱ、aVF、V4～V6直立，在aVR倒置）。心率80次/分。
+            </div>
+            <div class="col-sm-4 placeholder">       
+              <h2>就诊医生</h2>
+              王鹏
+              <h2 class="sub-header"></h2>
+              <h2>诊断科室</h2>
+              内科                           
+            </div>            
+
+          </div>
+          <br><br><br>
+          <h1 id="more" class="title">诊后随访</h1>
+          <h1 class="page-header"></h1>
+          <br>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>2015-11-24</th>
+                  <th>2015-11-24</th>
+                  <th>2015-11-26</th>
+                  <th>2015-11-27</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="{{ url_for('follow_up_info') }}">诊后第1次随访</a></td>
+                  <td><a href="">诊后第2次随访</a></td>
+                  <td><a href="">诊后第3次随访</a></td>
+                  <td><a href="">诊后第4次随访</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<!-- 画图 -->
+<script type="text/javascript" src="http://cdn.hcharts.cn/highstock/highstock.js"></script>
+<script type="text/javascript">  
+  // 修改头像
+  $('div.sidebar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
+
+  var chart = new Highcharts.Chart({
+
+        chart: {
+            renderTo: 'container',
+            type:'line',
+        },
+        title: {
+            text: '数据走势图'
+        },
+        yAxis: {
+            title: {
+              text: '值'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        //设置滚动条    
+        scrollbar: {
+            enabled: true
+        },
+        series: [{
+            data: [280, 260, 200, 220, 180, 200, 190],
+            name: '乳酸脱氢酶'
+        }]
+    });
+</script>
+{% endblock %}

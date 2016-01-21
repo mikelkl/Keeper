@@ -1,0 +1,108 @@
+{% extends '__base__.html' %}
+
+{% block title %}随访详情{% endblock %}
+
+{% block content %}
+  {% include 'navbar.html' %}
+<div class="container-fluid">
+  <div class="row" id="s">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <h4 class="text-center">诊后第1次随访</h4>
+      <center><span class="text-muted">2015-11-24</span></center>
+      <hr>
+      <ul class="nav nav-sidebar nav-pills nav-stacked">
+        <li class="active">
+          <a href="#more">乳酸脱氢酶(iu/L)&nbsp;&nbsp;&nbsp;&nbsp;200&nbsp;>
+          </a>
+        </li>        
+        <li>
+          <a href="#more">谷草转氨酶(iu/L)&nbsp;&nbsp;&nbsp;&nbsp;30.4&nbsp;>
+          </a>
+        </li>       
+        <li>
+          <a href="#more">谷丙转氨酶(iu/L)&nbsp;&nbsp;&nbsp;&nbsp;28.5&nbsp;>
+          </a>
+        </li>        
+        <li>
+          <a href="#more">磷酸肌酸激酶同酶(iu/L)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21.3&nbsp;>
+          </a>
+        </li>        
+        <li>
+          <a href="#more">外周血白细胞总数&nbsp;&nbsp;4^10&nbsp;>
+          </a>
+        </li>        
+        <li>
+          <a href="#more">中性粒细胞比率&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;61.2%&nbsp;>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="title">乳酸脱氢酶走势</h1>
+    <h1 class="page-header"></h1>
+    <!-- 数据走势图 -->
+    <div id="container" style="height: 489.73px;width:100%;"></div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>检查项目</th>
+            <th>单位</th>
+            <th>正常范围</th>
+            <th>历史最高</th>
+            <th>历史最低</th>
+            <th>最近一次</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>乳酸脱氢酶</td>
+            <td>iu/L</td>
+            <td>100-240</td>
+            <td>280iu/L</td>
+            <td>180iu/L</td>
+            <td>190iu/L</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<!-- 画图 -->
+<script type="text/javascript" src="http://cdn.hcharts.cn/highstock/highstock.js"></script>
+<script type="text/javascript">  
+  // 修改头像
+  $('div.sidebar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
+
+  var chart = new Highcharts.Chart({
+
+        chart: {
+            renderTo: 'container',
+            type:'line',
+        },
+        title: {
+            text: '数据走势图'
+        },
+        yAxis: {
+            title: {
+              text: '值'
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        //设置滚动条    
+        scrollbar: {
+            enabled: true
+        },
+        series: [{
+            data: [280, 260, 200, 220, 180, 200, 190],
+            name: '乳酸脱氢酶'
+        }]
+    });
+</script>
+{% endblock %}
