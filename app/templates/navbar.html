@@ -34,6 +34,9 @@
             <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;登出</a></li>
           </ul>
         </li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}" style="color:white;"><b>登陆</b></a></li>
+            <li><a href="#" style="color:white;"><b>註冊</b></a></li>
         {% endif %}
       </ul>
     </div>
