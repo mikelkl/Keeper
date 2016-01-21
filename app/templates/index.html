@@ -20,24 +20,8 @@
 {% block content %}
 {% include 'navbar.html' %}
     <div class="site-wrapper">
-
       <div class="site-wrapper-inner">
-
         <div class="cover-container">
-
-<!--           <div id="header" class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Keeper</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">主页</a></li>
-                  <li><a href="#">新特性</a></li>
-                  <li><a href="{{ url_for('about') }}">关于我们</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div> -->
-
           <div class="inner cover">
             <h1 class="cover-heading">Keeper心电采集仪</h1>
             <p class="lead">一款通过手指按压戒电击贴片的方式从人体获取心电信号的硬件设备，设备通过蓝牙模块将采集数据输出</p>
@@ -45,18 +29,12 @@
               <a href="#" class="btn btn-lg btn-default">下载App >></a>
             </p>
           </div>
-
-
         </div>
-
       </div>
-
     </div>
 
   <div class="container" style="padding-top:15px">
-
     {% include 'flash.html' %} 
-
     <div class="row">
       <div class="col-sm-4">
         <img src="{{ url_for('static', filename='img/logo.png') }}" class="img-responsive img-rounded" alt="Responsive image"></div>
@@ -79,7 +57,6 @@
           </li>
         </ul>
         <div class="row">
-
           <div class="col-sm-9">
             <input type="text" class="form-control" placeholder="Search..."></div>
           <div class="col-sm-3">
@@ -106,7 +83,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-sm-4">
       <div class="panel panel-primary">
         <!-- Default panel contents -->
@@ -123,7 +99,6 @@
           </div>
         </div>
       </div>
-
       <div class="panel panel-success">
         <!-- Default panel contents -->
         <div class="panel-heading" style="color:white">
@@ -139,13 +114,11 @@
           </div>
         </div>
       </div>
-
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading" style="color:#0082C1">
           最新出诊/停诊预报 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp更多>>
         </div>
-
         <!-- Table -->
         <table class="table">
           <tr>
@@ -159,11 +132,9 @@
           </tr>
         </table>
       </div>
-
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading" style="color:#0082C1">权威专家观点</div>
-
         <!-- Table -->
         <table class="table">
           <tr>
@@ -177,11 +148,9 @@
           </tr>
         </table>
       </div>
-
       <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading" style="color:#0082C1">最新专家文章</div>
-
         <!-- Table -->
         <table class="table">
           <tr>
@@ -355,7 +324,7 @@
     $(function() {
 
       setTimeout(function() {
-          $.bootstrapGrowl("<a href='/map/103.593302/30.332618'>收到一条急救消息</a>", { 
+          $.bootstrapGrowl("<a href='/first_aid'>收到一条急救消息</a>", { 
             type: 'danger',
             offset: {from: 'top', amount: 100}
           });

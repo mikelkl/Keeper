@@ -1,6 +1,6 @@
 {% extends '__base__.html' %}
 
-{% block title %}个人档案{% endblock %}
+{% block title %}心电图记录{% endblock %}
 
 {% block content %}
   {% include 'navbar.html' %}
@@ -8,39 +8,30 @@
   <div class="container-fluid">
     <div class="row" id="s">
       <div class="col-sm-3 col-md-2 sidebar">
+        <h3 class="text-center">历史记录</h3>
+        <hr><br>
         <ul class="nav nav-sidebar">
-          <li><a href="#">北京市</a></li>
-          <li><a href="#">上海市</a></li>
-          <li><a href="#">广东省</a></li>
-          <li><a href="#">江苏省</a></li>
-          <li><a href="#">四川省</a></li>
-          <ul>
-            <li><a href="#">成都市</a></li>
-            <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#"四川大学>华西医院 </a></li>
-              <li><a href="#">成都市第一人民医院</a></li>
-              <li><a href="#">成都市第二人民医院</a></li>
-              <li><a href="#">成都市第三人民医院</a></li>
-              <li><a href="#">核工业四一六医院</a></li>
-              <li><a href="#">四川省肿瘤医院</a></li>
-              <li><a href="#">双流第一人民医院</a></li>
-            </ul>
-            <li><a href="#">绵阳市</a></li><br>
-            <li><a href="#">德阳市</a></li><br>
-            <li><a href="#">泸州市</a></li><br>
-            <li><a href="#">达州市</a></li><br>
-            <li><a href="#">广安市</a></li><br>
-          </li>
-          </ul>
-          <li><a href="#">山东省</a></li>
-          <li><a href="#">浙江省</a></li>
-          <li><a href="#">湖北省</a></li>
-          <li><a href="#">云南省</a></li>
-          <li><a href="#">重庆市</a></li>
+          <li class="active"><a href="#">记录1</a></li>
+          <li><a href="#">记录1</a></li>
+          <li><a href="#">记录2</a></li>
+          <li><a href="#">记录3</a></li>
+          <li><a href="#">记录4</a></li>
+          <li><a href="#">记录5</a></li>
+          <li><a href="#">记录6</a></li>
+          <li><a href="#">记录7</a></li>
+          <li><a href="#">记录8</a></li>
+          <li><a href="#">记录9</a></li>
+          <li><a href="#">记录10</a></li>
+          <li><a href="#">记录11</a></li>
+          <li><a href="#">记录12</a></li>
+          <li><a href="#">记录13</a></li>
+          <li><a href="#">记录14</a></li>
+          <li><a href="#">记录15</a></li>
         </ul>
        </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">健康档案
+        <h1 class="title" style="margin-top:20px;">心电图测量数据
+        <h1 class="page-header"></h1>
           <form class="navbar-right">
             <input type="text" class="form-control" placeholder="病情搜索...">
           </form>
@@ -56,10 +47,11 @@
             <h2>单发室上性早搏</h2>
             <span class="text-muted">1例</span>
           </div>
-          <div id="container" style="height: 489.73px;width:1044.17px;"></div>
+          <!-- 心电图 -->
+          <div id="container" style="height: 489.73px;width:100%;"></div>
         </div>
-        <h1 class="page-header" style="margin-top:100px;"></h1>
-        <h2 class="sub-header">诊断结果</h2>
+        <h1 class="title" style="margin-top:200px;">诊断结果</h1>
+        <h1 class="page-header"></h1>
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
@@ -108,35 +100,35 @@
 <!-- 画图 -->
 <script type="text/javascript" src="http://cdn.hcharts.cn/highstock/highstock.js"></script>
 <script type="text/javascript">
-    var chart = new Highcharts.Chart({
+  var chart = new Highcharts.Chart({
 
-        chart: {
-            renderTo: 'container',
-            type:'line',
-        },
-        title: {
-            text: '患者心电图'
-        },
-        xAxis:{
-            min:0,
-            max:10
-        },
-        yAxis: {
-            title: {
-              text: '值'
-            }
-        },
-        credits: {
-            enabled: false
-        },
-        //设置滚动条    
-        scrollbar: {
-            enabled: true
-        },
-        series: [{
-            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-            name: '测量数据'
-        }]
-    });
+      chart: {
+          renderTo: 'container',
+          type:'line',
+      },
+      title: {
+          text: '患者心电图'
+      },
+      xAxis:{
+          min:0,
+          max:10
+      },
+      yAxis: {
+          title: {
+            text: '值'
+          }
+      },
+      credits: {
+          enabled: false
+      },
+      //设置滚动条    
+      scrollbar: {
+          enabled: true
+      },
+      series: [{
+          data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+          name: '测量数据'
+      }]
+  });
 </script>
 {% endblock %}
