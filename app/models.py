@@ -4,6 +4,10 @@ from app import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nickname = db.Column(db.String(64), index=True)
+    sex = db.Column(db.String(5), index=True)
+    age = db.Column(db.String(5), index=True)
+    height = db.Column(db.String(8), index=True)
+    weight = db.Column(db.String(8), index=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password = db.Column(db.String(20), index=True, unique=False)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
