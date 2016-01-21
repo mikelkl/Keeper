@@ -36,7 +36,7 @@ def login():
     if request.method == 'POST':
         user = User.query.filter_by(
             email=request.form.get('email'), password=request.form.get('password')).first()
-        
+
         if user is None:
             flash('用户名或密码错误！请重新输入！')
             return redirect(url_for('login'))
@@ -46,7 +46,7 @@ def login():
             # print request.form.get('remember_me')
             remember_me = True
         login_user(user, remember=remember_me)
-        return redirect(url_for('doctor'))
+        return redirect(url_for('patient'))
 
     return render_template('login.html')
 
@@ -84,6 +84,33 @@ def doctor():
                            user=g.user)
 
 
+@app.route('/patient')
+@login_required
+def patient():
+    if g.user == None:
+        flash('User ' + g.nickname + ' not found.')
+        return redirect(url_for('index'))
+    return render_template('patient.html',
+                           user=g.user)
+
+@app.route('/treatment_record')
+@login_required
+def treatment_record():
+    if g.user == None:
+        flash('User ' + g.nickname + ' not found.')
+        return redirect(url_for('index'))
+    return render_template('treatment_record.html')
+
+
+@app.route('/follow_up_info')
+@login_required
+def follow_up_info():
+    if g.user == None:
+        flash('User ' + g.nickname + ' not found.')
+        return redirect(url_for('index'))
+    return render_template('follow_up_info.html')
+
+
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
@@ -94,9 +121,10 @@ def edit():
             g.user.about_me = request.form.get('about_me')
         avatar = request.files.get('avatar')
         if avatar and allowed_file(avatar.filename):
-            avatar_name = unicode(g.user.id) + '.' + avatar.filename.rsplit('.', 1)[1]
+            avatar_name = unicode(
+                g.user.id) + '.' + avatar.filename.rsplit('.', 1)[1]
             # avatar_url = os.path.join(UPLOAD_FOLDER, avatar_name)
-            avatar.save( UPLOAD_FOLDER + '/' + avatar_name)
+            avatar.save(UPLOAD_FOLDER + '/' + avatar_name)
             g.user.avatar = avatar_name
 
         db.session.add(g.user)
@@ -110,6 +138,7 @@ def edit():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
 
 @app.route('/about')
 def about():
