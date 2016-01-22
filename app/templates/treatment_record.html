@@ -69,6 +69,28 @@
             </div>            
 
           </div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>就诊日期</th>
+                  <th>就诊医院</th>
+                  <th>就诊医生</th>
+                  <th>诊断科室</th>
+                  <th>病情诊断</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="info">
+                  <td>2015-11-24</td>
+                  <td>四川大学华西医院</td>
+                  <td>王鹏</td>
+                  <td>内科</td>
+                  <td>经过诊断，确定病人为窦性心律不齐,表现为心悸、胸闷、不适。P波规律出现，且P波形态表明激动来自窦房结（即P波在Ⅰ、Ⅱ、aVF、V4～V6直立，在aVR倒置）。心率80次/分。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <br><br><br>
           <h1 id="more" class="title">诊后随访</h1>
           <h1 class="page-header"></h1>
@@ -101,36 +123,14 @@
 
 {% block js %}
 <!-- 画图 -->
-<script type="text/javascript" src="http://cdn.hcharts.cn/highstock/highstock.js"></script>
 <script type="text/javascript">  
   // 修改头像
   $('div.sidebar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
 
-  var chart = new Highcharts.Chart({
-
-        chart: {
-            renderTo: 'container',
-            type:'line',
-        },
-        title: {
-            text: '数据走势图'
-        },
-        yAxis: {
-            title: {
-              text: '值'
-            }
-        },
-        credits: {
-            enabled: false
-        },
-        //设置滚动条    
-        scrollbar: {
-            enabled: true
-        },
-        series: [{
-            data: [280, 260, 200, 220, 180, 200, 190],
-            name: '乳酸脱氢酶'
-        }]
+    $('#save').click(function() {
+      var date = document.getElementById('date').value;
+      var diagnose = document.getElementById('diagnose').value;
+      $('.nav-sidebar').prepend('<li><a href="#more"><b>患者姓名：' + '{{ g.user.nickname }}' + '</b><br>就诊原因：'+ diagnose +'<br><em>就诊日期：'+date+'</em></a></li>');
     });
 </script>
 {% endblock %}
