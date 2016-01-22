@@ -68,10 +68,15 @@ def first_aid():
     return render_template('first_aid.html', jd=103.593302, wd=30.332618)
 
 
-@app.route('/record')
+@app.route('/record/<num>')
 @login_required
-def record():
-    return render_template('record.html')
+def record(num):
+    data = []
+    with open('app/static/uploads/data/' + num + '.txt', 'r') as f:
+        for point in f.readlines():
+            data.append(int(point.strip()))
+    # print data
+    return render_template('record.html', data=data, id=num)
 
 
 @app.route('/doctor')
@@ -92,6 +97,7 @@ def patient():
         return redirect(url_for('index'))
     return render_template('patient.html',
                            user=g.user)
+
 
 @app.route('/treatment_record')
 @login_required
