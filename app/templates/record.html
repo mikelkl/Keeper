@@ -2,18 +2,26 @@
 
 {% block title %}心电图记录{% endblock %}
 
+{% block css %}
+<style>
+  .nav-sidebar a:active  {
+
+  }
+</style>
+
+{% endblock %}
+
 {% block content %}
   {% include 'navbar.html' %}
-
+  <input type="hidden">{{ id }}
   <div class="container-fluid">
     <div class="row" id="s">
       <div class="col-sm-3 col-md-2 sidebar">
         <h3 class="text-center">历史记录</h3>
         <hr><br>
         <ul class="nav nav-sidebar">
-          <li class="active"><a href="#">记录1</a></li>
-          <li><a href="#">记录1</a></li>
-          <li><a href="#">记录2</a></li>
+          <li id="1"><a href="{{ url_for('record', num=1) }}">记录1</a></li>
+          <li id="2"><a href="{{ url_for('record', num=2) }}">记录2</a></li>
           <li><a href="#">记录3</a></li>
           <li><a href="#">记录4</a></li>
           <li><a href="#">记录5</a></li>
@@ -98,6 +106,7 @@
 <!-- 画图 -->
 <script type="text/javascript" src="http://cdn.hcharts.cn/highstock/highstock.js"></script>
 <script type="text/javascript">
+  $($('.nav-sidebar li').get({{ id }}-1)).addClass('active');
   var chart = new Highcharts.Chart({
 
       chart: {
@@ -107,9 +116,10 @@
       title: {
           text: '患者心电图'
       },
-      xAxis:{
-          min:0,
-          max:10
+      xAxis: {
+          // 一页图里最大显示的横坐标
+          max: 1200,
+          min: 0
       },
       yAxis: {
           title: {
@@ -124,7 +134,7 @@
           enabled: true
       },
       series: [{
-          data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4,29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+          data: {{ data|tojson|safe }},
           name: '测量数据'
       }]
   });
