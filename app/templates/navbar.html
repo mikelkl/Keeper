@@ -29,8 +29,9 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{ url_for('doctor') }}"><span class=" glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;&nbsp;个人资料</a></li>
             <li><a href="{{ url_for('treatment_record') }}"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;就诊随访</a></li>
-            <li><a href="{{ url_for('record') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;&nbsp;心电图记录</a></li>
+            <li><a href="{{ url_for('record', num=1) }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;&nbsp;心电图记录</a></li>
             <li><a href="{{ url_for('first_aid') }}"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>&nbsp;&nbsp;一键急救</a></li>
+            <li><a href="" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>&nbsp;&nbsp;添加就診记录</a></li>
             <li class="divider" style="color:black;"></li>
             <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;登出</a></li>
           </ul>
@@ -43,3 +44,40 @@
     </div>
   </div>
 </nav>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center">添加就诊记录</h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+          <input id="date" type="text" class="form-control" placeholder="就诊日期" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></span>
+          <input id="hospital" type="text" class="form-control" placeholder="就诊医院" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+          <input id="doctor" type="text" class="form-control" placeholder="就诊医生" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></span>
+          <input id="office" type="text" class="form-control" placeholder="就诊科室" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></span>
+          <input id="diagnose" type="text" class="form-control" placeholder="病情诊断" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button id="save" type="button" class="btn btn-primary" data-dismiss="modal">保存更改</button>
+      </div>
+    </div>
+  </div>
+</div>
