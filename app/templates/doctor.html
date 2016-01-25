@@ -45,12 +45,12 @@
     <div class="container">
         <div class="row">
             <div class="well well-lg col-md-8">
-                <p class="name">{{ user.nickname }}{% if user.about_me %}<span class="grey"> , {{ user.about_me }}</span>{% endif %}</p>
+                <p class="name">{{ user.nickname }} </p>
                 <div class="pull-left">
                     <img src="static/uploads/avatars/{{ user.avatar }}" style="width:100px;height:100px" class="img-rounded">
                 </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;成都&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;骨科&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ g.user.height }}cm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;{{ g.user.weight }}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                 <div class="pull-right">
                 {% if user.id == g.user.id %}
                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>&nbsp;
@@ -90,26 +90,10 @@
         </div>
         <div class="row">
             <div class="well well-lg col-md-8 well2">
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
-            asdf<br>
+            <br><br><br>
             </div>
             <div class="col-md-offset-1 col-md-1 follow">
-            <h4 class="grey">关注了</h4><h4><b>2</b>人</h4>
+            <h4 class="grey">关注了</h4><h4><b>0</b>人</h4>
             </div> 
             <div class="col-md-1">
             <h4 class="grey">关注者</h4><h4><b>0</b>人</h4>

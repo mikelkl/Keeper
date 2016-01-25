@@ -17,24 +17,15 @@
   <div class="container-fluid">
     <div class="row" id="s">
       <div class="col-sm-3 col-md-2 sidebar">
-        <h3 class="text-center">历史记录</h3>
+        <h3 class="text-center">心电监测记录</h3>
         <hr><br>
-        <ul class="nav nav-sidebar">
-          <li id="1"><a href="{{ url_for('record', num=1) }}">记录1</a></li>
-          <li id="2"><a href="{{ url_for('record', num=2) }}">记录2</a></li>
-          <li><a href="#">记录3</a></li>
-          <li><a href="#">记录4</a></li>
-          <li><a href="#">记录5</a></li>
-          <li><a href="#">记录6</a></li>
-          <li><a href="#">记录7</a></li>
-          <li><a href="#">记录8</a></li>
-          <li><a href="#">记录9</a></li>
-          <li><a href="#">记录10</a></li>
-          <li><a href="#">记录11</a></li>
-          <li><a href="#">记录12</a></li>
-          <li><a href="#">记录13</a></li>
-          <li><a href="#">记录14</a></li>
-          <li><a href="#">记录15</a></li>
+        <ul class="nav nav-sidebar"><!-- 
+          <li id="1"><a href="{{ url_for('record', file_name=1.txt) }}">2016-1-22 10:38</a></li>
+          <li id="2"><a href="{{ url_for('record', file_name=1.txt) }}">2016-1-22 10:38</a></li>
+          <li id="3"><a href="{{ url_for('record', file_name=1.txt) }}">2016-1-22 10:38</a></li> -->
+          {% for ecg in ecgs %}
+          <li id="{{ecg.id}}"><a href="{{ ecg.file_name }}">{{ ecg.file_name }}</a></li>
+          {% endfor %}
         </ul>
        </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -46,12 +37,12 @@
         </h1>
         <div class="row placeholders">
           <div class="col-sm-6 placeholder">
-            <h2>心律失常</h2>
-            <span class="text-muted">3例</span>
+            <h3>记录时间</h3>
+            <span class="text-muted">{{ date }}</span>
           </div>
           <div class="col-sm-6 placeholder">
-            <h2>单发室上性早搏</h2>
-            <span class="text-muted">1例</span>
+            <h3>记录时长</h3>
+            <span class="text-muted">{{ time }}秒</span>
           </div>
           <!-- 心电图 -->
           <div id="container" style="height: 489.73px;width:100%;"></div>

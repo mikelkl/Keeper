@@ -2,6 +2,23 @@
 
 {% block title %}就诊记录{% endblock %}
 
+{% block css %}
+  <style>
+    .text-muted {
+      font-size: 1.3em;
+    }
+    .col-sm-6 {
+      margin-bottom: 0px;
+    }
+    .col-md-12 {
+      padding-left: 45px;
+    }
+    .big  {
+      width:80px;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
   {% include 'navbar.html' %}
     <div class="container-fluid">
@@ -10,33 +27,32 @@
           <h3 class="text-center">病人资料</h3>   <hr>
           <center><img src="" style="width:100px;height:100px" class="img-circle" alt="病人头像">
           </center>
-          <br><p class="text-center">{{ g.user.nickname }}</p>
+          <br><p class="text-center">{{ user.nickname }}</p>
             <table class="table">
               <tbody>
                 <tr>
-                  <td>年龄：{{ g.user.age }}</td>
+                  <td>年龄：{{ user.age }}</td>
                 </tr>
                 <tr>
-                  <td>性别：{{ g.user.sex }}</td>
+                  <td>性别：{{ user.sex }}</td>
                 </tr>
                 <tr>
-                  <td>身高：{{ g.user.height }}</td>
+                  <td>身高：{{ user.height }}</td>
                 </tr>
                 <tr>
-                  <td>体重：{{ g.user.weight }}</td>
+                  <td>体重：{{ user.weight }}</td>
                 </tr>
               </tbody>
             </table>
             <hr>
           <h3 class="text-center">就诊记录</h3><hr> 
           <ul class="nav nav-sidebar nav-pills nav-stacked">
-            <li class="active"><a href="#more"><b>患者姓名：莫绪旻</b><br>就诊原因：心律不齐，脉搏絮乱，生活作息不规律<br><em>就诊日期：2015-11-24</em></a></li>
-            <li><a href="#more"><b>患者姓名：莫绪旻</b><br>就诊原因：窦性心率不齐，熬夜导致<br><em>就诊日期：2015-11-19</em></a></li>
-            <li><a href="#more"><b>患者姓名：刘康龙</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-15</em></a></li>
-            <li><a href="#more"><b>患者姓名：应俊康</b><br>就诊原因：心动过滤，遗传病，剧烈运动后更为明显<br><em>就诊日期：2015-11-11</em></a></li>
-            <li><a href="#more"><b>患者姓名：刘康龙</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-8</em></a></li>
-            <li><a href="#more"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-6</em></a></li>
-            <li><a href="#more"><b>患者姓名：莫绪旻</b><br>就诊原因：心律不齐，脉搏絮乱，生活作息不规律<br><em>就诊日期：2015-11-4</em></a></li>
+            <li><a href="{{ url_for('treatment_record', num=0) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：心律不齐，脉搏絮乱，生活作息不规律<br><em>就诊日期：2015-11-24</em></a></li>
+            <li><a href="{{ url_for('treatment_record', num=1) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：窦性心率不齐，熬夜导致<br><em>就诊日期：2015-11-19</em></a></li>
+            <li><a href="{{ url_for('treatment_record', num=2) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-15</em></a></li>
+            <li><a href="{{ url_for('treatment_record', num=3) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：心动过滤，遗传病，剧烈运动后更为明显<br><em>就诊日期：2015-11-11</em></a></li>
+            <li><a href="{{ url_for('treatment_record', num=4) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-6</em></a></li>
+            <li><a href="{{ url_for('treatment_record', num=5) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-8</em></a></li>
           </ul>
          </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 main">
@@ -44,54 +60,49 @@
           <h1 class="page-header"></h1>
           <br>
           <div class="row placeholders">
-            <div class="col-sm-6 placeholder">
-              <h2>就诊日期</h2>
-              <span class="text-muted">2015-11-24</span>
+            <div class="col-sm-3 placeholder">
+              <h4><img src="{{ url_for('static', filename='img/37.png') }}" width=50 heigth=50 class="img-rounded" alt="">就诊日期</h4>
+              <span class="text-muted">{{ treatment.date.decode('utf-8') }}</span>
             </div>
-            <div class="col-sm-6 placeholder">
-              <h2>就诊医院</h2>
-              <span class="text-muted">四川大学华西医院</span>
+            <div class="col-sm-3 placeholder">
+              <h4><img src="{{ url_for('static', filename='img/72.png') }}" width=50 heigth=50 class="img-rounded" alt="">就诊医院</h4>
+              <span class="text-muted">{{ treatment.hospital.decode('utf-8') }}</span>
             </div>
+            <div class="col-sm-3 placeholder">       
+              <h4><img src="{{ url_for('static', filename='img/71.png') }}" width=50 heigth=50 class="img-rounded" alt="">就诊医生</h4>
+              <span class="text-muted">{{ treatment.doctor.decode('utf-8') }}</span>
+            </div>
+              <div class="col-sm-3 placeholder">
+              <h4><img src="{{ url_for('static', filename='img/76.png') }}" width=50 heigth=50 class="img-rounded" alt="">诊断科室</h4>
+              <span class="text-muted">{{ treatment.administrative.decode('utf-8') }}</span>      
+            </div>  
           </div>
 
-          <h2 class="sub-header"></h2>
-          <div class="table-responsive">
-            <div class="col-sm-8 placeholder">       
-              <h3>病情诊断</h3>
-                  经过诊断，确定病人为窦性心律不齐,表现为心悸、胸闷、不适。P波规律出现，且P波形态表明激动来自窦房结（即P波在Ⅰ、Ⅱ、aVF、V4～V6直立，在aVR倒置）。心率80次/分。
-            </div>
-            <div class="col-sm-4 placeholder">       
-              <h2>就诊医生</h2>
-              王鹏
-              <h2 class="sub-header"></h2>
-              <h2>诊断科室</h2>
-              内科                           
-            </div>            
-
-          </div>
-          <div class="table-responsive">
+<div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>就诊日期</th>
-                  <th>就诊医院</th>
-                  <th>就诊医生</th>
-                  <th>诊断科室</th>
-                  <th>病情诊断</th>
+                  <th class="big">就诊医生</th>
+                  <th class="big">诊断科室</th>
+                  <th class="big">医生职称</th>
+                  <th class="big">就诊日期</th>
+                  <th class="big">就诊医院</th>
+                  <th class="big">病情诊断</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="info">
-                  <td>2015-11-24</td>
-                  <td>四川大学华西医院</td>
-                  <td>王鹏</td>
-                  <td>内科</td>
-                  <td>经过诊断，确定病人为窦性心律不齐,表现为心悸、胸闷、不适。P波规律出现，且P波形态表明激动来自窦房结（即P波在Ⅰ、Ⅱ、aVF、V4～V6直立，在aVR倒置）。心率80次/分。</td>
+                <tr>
+                  <td>{{ treatment.doctor.decode('utf-8') }}</td>
+                  <td>{{ treatment.administrative.decode('utf-8') }}</td>
+                  <td>{{ treatment.professional.decode('utf-8') }}</td>
+                  <td>{{ treatment.date.decode('utf-8') }}</td>
+                  <td>{{ treatment.hospital.decode('utf-8') }}</td>
+                  <td>{{ treatment.treatmentReason.decode('utf-8') }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <br><br><br>
+          <br><br>
           <h1 id="more" class="title">诊后随访</h1>
           <h1 class="page-header"></h1>
           <br>
@@ -115,6 +126,7 @@
               </tbody>
             </table>
           </div>
+
         </div>
       </div>
     </div>
@@ -125,12 +137,14 @@
 <!-- 画图 -->
 <script type="text/javascript">  
   // 修改头像
-  $('div.sidebar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
+  $('div.sidebar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ user.avatar }}"));
+
+  $($('.nav-sidebar li').get({{ num }})).addClass('active');
 
     $('#save').click(function() {
       var date = document.getElementById('date').value;
       var diagnose = document.getElementById('diagnose').value;
-      $('.nav-sidebar').prepend('<li><a href="#more"><b>患者姓名：' + '{{ g.user.nickname }}' + '</b><br>就诊原因：'+ diagnose +'<br><em>就诊日期：'+date+'</em></a></li>');
+      $('.nav-sidebar').prepend('<li><a href="#more"><b>患者姓名：' + '{{ user.nickname }}' + '</b><br>就诊原因：'+ diagnose +'<br><em>就诊日期：'+date+'</em></a></li>');
     });
 </script>
 {% endblock %}
