@@ -1,6 +1,28 @@
 from app import db
 
 
+class Treatment(object):
+    def __init__(self, doctor, administrative, professional, date, hospital, patient, treatmentReason):
+        self.doctor = doctor
+        self.administrative = administrative
+        self.professional = professional
+        self.date = date
+        self.hospital = hospital
+        self.patient = patient
+        self.treatmentReason = treatmentReason
+
+    def __repr__(self):
+        return '<Treatment %r>' % (self.doctor)
+
+class ECG(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    file_name = db.Column(db.String(100), index=True)
+    date = db.Column(db.String(20), index=True)
+    time = db.Column(db.String(30), index=True)
+    def __repr__(self):
+        return '<ECG %r>' % (self.file_name)
+
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nickname = db.Column(db.String(64), index=True)
