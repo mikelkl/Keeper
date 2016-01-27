@@ -1,0 +1,7 @@
+Flask
+Flask-Login
+Flask-SQLAlchemy
+Jinja2
+Werkzeug
+decorator
+sqlalchemy-migrate
