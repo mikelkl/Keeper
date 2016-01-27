@@ -68,12 +68,10 @@ def first_aid():
     return render_template('first_aid.html', jd=103.593302, wd=30.332618)
 
 
-@app.route('/record/<file_name>')
+@app.route('/record/<file_name>/<num>')
 @login_required
-def record(file_name):
+def record(file_name="", num=""):
     ecgs = ECG.query.all()
-    print ecgs
-    print file_name
     if not file_name:
         return render_template('record.html', ecgs=ecgs)
     data = []
@@ -83,32 +81,8 @@ def record(file_name):
     # print data
     date = 0
     time = 0
-    # if num == '1':
-    #     date = '2016-1-22 10:38'
-    #     time = '30'
-    # elif num == '2':
-    #     date = '2016-1-22 10:38'
-    #     time = '3'
-    # elif num == '3':
-    #     date = '2016-1-22 10:38'
-    #     time = '18'
-    return render_template('record.html',ecgs=ecgs, data=data, date=date, time=time)
-    # with open('app/static/uploads/data/' + file_name, 'r') as f:
-    #     for point in f.readlines():
-    #         data.append(int(point.strip()))
-    # # print data
-    # date = 0
-    # time = 0
-    # if num == '1':
-    #     date = '2016-1-22 10:38'
-    #     time = '30'
-    # elif num == '2':
-    #     date = '2016-1-22 10:38'
-    #     time = '3'
-    # elif num == '3':
-    #     date = '2016-1-22 10:38'
-    #     time = '18'
-    # return render_template('record.html', data=data, id=num, date=date, time=time)
+    ecg = ECG.query.filter_by(id=num).first()
+    return render_template('record.html',ecgs=ecgs, id=num, data=data, date=ecg.date, time=ecg.time)
 
 
 @app.route('/doctor')

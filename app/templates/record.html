@@ -19,12 +19,9 @@
       <div class="col-sm-3 col-md-2 sidebar">
         <h3 class="text-center">心电监测记录</h3>
         <hr><br>
-        <ul class="nav nav-sidebar"><!-- 
-          <li id="1"><a href="{{ url_for('record', file_name=1.txt) }}">2016-1-22 10:38</a></li>
-          <li id="2"><a href="{{ url_for('record', file_name=1.txt) }}">2016-1-22 10:38</a></li>
-          <li id="3"><a href="{{ url_for('record', file_name=1.txt) }}">2016-1-22 10:38</a></li> -->
+        <ul class="nav nav-sidebar">
           {% for ecg in ecgs %}
-          <li id="{{ecg.id}}"><a href="{{ ecg.file_name }}">{{ ecg.file_name }}</a></li>
+          <li id="{{ecg.id}}"><a href="/record/{{ ecg.file_name }}/{{ecg.id}}">{{ ecg.file_name }}</a></li>
           {% endfor %}
         </ul>
        </div>

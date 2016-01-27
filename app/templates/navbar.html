@@ -36,7 +36,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{ url_for('doctor') }}"><span class=" glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;&nbsp;个人资料</a></li>
             <li><a href="{{ url_for('treatment_record', num=0) }}"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;就诊記錄</a></li>
-            <li><a href="{{ url_for('record', file_name='1.txt') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;&nbsp;心电图记录</a></li>
+            <li><a href="{{ url_for('record', file_name='1.txt', num=1) }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;&nbsp;心电图记录</a></li>
             <li><a href="{{ url_for('first_aid') }}"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>&nbsp;&nbsp;一键急救</a></li>
             <li><a href="" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>&nbsp;&nbsp;添加就診记录</a></li>
             <li class="divider" style="color:black;"></li>
