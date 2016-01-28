@@ -3,7 +3,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 import os
 from flask.ext.login import LoginManager
 from config import basedir, MAIL_SERVER, MAIL_PORT
-from private_config import ADMINS, MAIL_PASSWORD, MAIL_USERNAME
+# from private_config import ADMINS, MAIL_PASSWORD, MAIL_USERNAME
 
 
 app = Flask(__name__)
