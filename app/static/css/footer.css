@@ -15,6 +15,7 @@ body {
   height: 60px;
   background-color:#eee; 
   border-top:1px solid #ccc;
+  /*clear: both;*/
 }
 
 
