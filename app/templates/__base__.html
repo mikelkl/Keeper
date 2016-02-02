@@ -20,13 +20,16 @@
   <style>
     .navbar-default .navbar-nav > li > a:hover {
       background-color: #0482ba;
+      color: #fff;
     }
     .nav > li:hover .dropdown-menu {display: block;}
     .headroom {position: fixed;top: 0;left: 0;right: 0;transition: all .5s ease-in-out;}
     .headroom--unpinned {top: -100px;}
     .headroom--pinned {top: 0;}
+    .navbar-default .navbar-nav > li > a {
+      color: #fff;
+    }
   </style>
-
   {% block css %}<!-- block css  -->{% endblock %}
 
 </head>
@@ -61,10 +64,6 @@
       "offset": 500,
     });
     headroom.init();
-
-    // 修改导航栏链接颜色
-    $('nav a').css('color', '#FFF');
-    $('ul.dropdown-menu a').css('color', '#000');
   </script>
   {% block js %}<!-- block JavaScript  -->{% endblock %}
 </body>
