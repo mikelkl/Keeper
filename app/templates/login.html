@@ -10,7 +10,6 @@
     <link rel="icon" href="{{ url_for('static', filename='img/logo2.png') }}o">
 
     <title>登陆 - 在线心电医疗平台</title>
-
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -29,6 +28,12 @@
           position: relative;
           margin: 0 auto;
       }
+        input:focus:invalid {
+            background: url('{{ url_for('static', filename='img/false.png') }}') no-repeat right;
+        }
+        input:focus:valid {
+            background: url('{{ url_for('static', filename='img/right.png') }}') no-repeat right;
+        }
     </style>
   </head>
 
@@ -46,15 +51,13 @@
       <div class="login-form">
       <form action="{{ url_for('login') }}" method="post" class="form-signin">
         <h1 class="form-signin-heading text-center">Keeper</h1>
-        <div class="input-group">
-          <label for="inputEmail" class="sr-only">Email 地址</label>
-          <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email 地址" required autofocus>
-          <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+          <div class="input-group">
+              <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+              <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email 地址" required autofocus>
         </div>
         <div class="input-group">
-          <label for="inputPassword" class="sr-only">密码</label>
-          <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
-          <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></span>
+            <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></span>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
         </div>
         <div class="checkbox">
           <label>
