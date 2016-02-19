@@ -30,7 +30,7 @@
         <button type="submit" style="color:white;" class="btn btn-primary">搜索</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        {% if g.user.is_authenticated %}
+          {% if current_user.is_authenticated %}
         <li class="dropdown">
           <a href="{{ url_for('doctor') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="" style="width:25px;height:25px" class="img-rounded">{{ g.user.nickname }} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
