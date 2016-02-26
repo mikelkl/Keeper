@@ -1,6 +1,5 @@
 # My configurations:
 flask
-db_repository
 app/static/uploads
 tmp
 app.db
