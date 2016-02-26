@@ -2,7 +2,8 @@
 
 {% block title %}主页{% endblock %}
 
-{% block css %}
+{% block head %}
+    {{ super() }}
 
 <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">
 
@@ -11,14 +12,13 @@
     padding-top:  0px;
   }
   footer {
-  position: relative;
+      position: relative;
   }
 </style>
 
 {% endblock %}
 
-{% block content %}
-{% include 'navbar.html' %}
+{% block page_content %}
     <div class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container">
@@ -312,7 +312,8 @@
 
 {% endblock %}
 
-{% block js %}
+{% block scripts %}
+    {{ super() }}
 
 <!-- 通知 -->
 <script src="{{ url_for('static', filename='js/jquery.bootstrap-growl.js') }}">

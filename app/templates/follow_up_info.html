@@ -2,8 +2,8 @@
 
 {% block title %}随访详情{% endblock %}
 
-{% block content %}
-  {% include 'navbar.html' %}
+{% block page_content %}
+
 <div class="container-fluid">
   <div class="row" id="s">
     <div class="col-sm-3 col-md-2 sidebar">
@@ -71,7 +71,8 @@
 </div>
 {% endblock %}
 
-{% block js %}
+{% block scripts %}
+    {{ super() }}
 <!-- 画图 -->
 <script type="text/javascript" src="http://cdn.hcharts.cn/highstock/highstock.js"></script>
 <script type="text/javascript">  

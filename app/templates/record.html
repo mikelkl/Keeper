@@ -2,7 +2,8 @@
 
 {% block title %}心电图记录{% endblock %}
 
-{% block css %}
+{% block head %}
+    {{ super() }}
 <style>
   .nav-sidebar a:active  {
 
@@ -11,8 +12,8 @@
 
 {% endblock %}
 
-{% block content %}
-  {% include 'navbar.html' %}
+{% block page_content %}
+
   <input type="hidden">{{ id }}
   <div class="container-fluid">
     <div class="row" id="s">
@@ -90,7 +91,8 @@
   </div>
 
 {% endblock %}
-{% block js %}
+{% block scripts %}
+    {{ super() }}
 <!-- 画图 -->
 <script type="text/javascript" src="http://cdn.hcharts.cn/highstock/highstock.js"></script>
 <script type="text/javascript">

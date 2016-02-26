@@ -2,8 +2,8 @@
 
 {% block title %}一键急救{% endblock %}
 
-{% block content %}
-  {% include 'navbar.html' %}
+{% block page_content %}
+
     <div class="container-fluid">
       <div class="row" id="s">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -84,7 +84,8 @@
 
 {% endblock %}
 
-{% block js %}
+{% block scripts %}
+    {{ super() }}
 <!-- 百度地图api -->
 <script type="text/javascript">  
 function initialize() {  

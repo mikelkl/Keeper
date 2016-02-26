@@ -2,7 +2,8 @@
 
 {% block title %}就诊记录{% endblock %}
 
-{% block css %}
+{% block head %}
+    {{ super() }}
   <style>
     .text-muted {
       font-size: 1.3em;
@@ -19,8 +20,8 @@
   </style>
 {% endblock %}
 
-{% block content %}
-  {% include 'navbar.html' %}
+{% block page_content %}
+
     <div class="container-fluid">
       <div class="row" id="s">
         <div class="col-sm-3 col-md-3 sidebar">
@@ -133,7 +134,8 @@
 
 {% endblock %}
 
-{% block js %}
+{% block scripts %}
+    {{ super() }}
 <!-- 画图 -->
 <script type="text/javascript">  
   // 修改头像

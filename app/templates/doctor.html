@@ -1,8 +1,9 @@
 {% extends "__base__.html" %}
 
-{% block title %}{{ user.nickname }}{% endblock %}
+{% block title %}{{ user.nickname }}-在线心电医疗平台{% endblock %}
 
-{% block css %}
+{% block head %}
+    {{ super() }}
 <style>
     .well {
         margin-top: 46px;
@@ -39,8 +40,8 @@
 </style>
 {% endblock %}
 
-{% block content %}
-    {% include 'navbar.html' %}
+{% block page_content %}
+
     {% include 'flash.html' %}
     <div class="container">
         <div class="row">
