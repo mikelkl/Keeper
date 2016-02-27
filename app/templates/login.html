@@ -10,9 +10,7 @@
     <link rel="icon" href="{{ url_for('static', filename='img/logo2.png') }}o">
 
     <title>登陆 - 在线心电医疗平台</title>
-    <!-- Bootstrap core CSS -->
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-
+      <link href="{{ bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
@@ -40,8 +38,8 @@
   <body>
 
     <div class="container">
-      
-      {% include 'flash.html' %}  
+
+        {% include '_flash.html' %}
       <div class="login">
       <div class="login-screen">
 <!--       <div class="login-icon">
@@ -71,6 +69,6 @@
       </div>
 
     </div> <!-- /container -->
-    {% include 'footer.html' %}
+    {% include '_footer.html' %}
   </body>
 </html>
