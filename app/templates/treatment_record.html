@@ -48,12 +48,19 @@
             <hr>
           <h3 class="text-center">就诊记录</h3><hr> 
           <ul class="nav nav-sidebar nav-pills nav-stacked">
-            <li><a href="{{ url_for('treatment_record', num=0) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：心律不齐，脉搏絮乱，生活作息不规律<br><em>就诊日期：2015-11-24</em></a></li>
-            <li><a href="{{ url_for('treatment_record', num=1) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：窦性心率不齐，熬夜导致<br><em>就诊日期：2015-11-19</em></a></li>
-            <li><a href="{{ url_for('treatment_record', num=2) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-15</em></a></li>
-            <li><a href="{{ url_for('treatment_record', num=3) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：心动过滤，遗传病，剧烈运动后更为明显<br><em>就诊日期：2015-11-11</em></a></li>
-            <li><a href="{{ url_for('treatment_record', num=4) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-6</em></a></li>
-            <li><a href="{{ url_for('treatment_record', num=5) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-8</em></a></li>
+              <li>
+                  <a href="{{ url_for('main.treatment_record', num=0) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：心律不齐，脉搏絮乱，生活作息不规律<br><em>就诊日期：2015-11-24</em></a>
+              </li>
+              <li><a href="{{ url_for('main.treatment_record', num=1) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：窦性心率不齐，熬夜导致<br><em>就诊日期：2015-11-19</em></a>
+              </li>
+              <li><a href="{{ url_for('main.treatment_record', num=2) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-15</em></a>
+              </li>
+              <li><a href="{{ url_for('main.treatment_record', num=3) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：心动过滤，遗传病，剧烈运动后更为明显<br><em>就诊日期：2015-11-11</em></a>
+              </li>
+              <li><a href="{{ url_for('main.treatment_record', num=4) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-6</em></a>
+              </li>
+              <li><a href="{{ url_for('main.treatment_record', num=5) }}"><b>患者姓名：莫绪旻</b><br>就诊原因：偶发性早搏，历史遗留问题<br><em>就诊日期：2015-11-8</em></a>
+              </li>
           </ul>
          </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 main">
@@ -119,7 +126,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><a href="{{ url_for('follow_up_info') }}">诊后第1次随访</a></td>
+                    <td><a href="{{ url_for('main.follow_up_info') }}">诊后第1次随访</a></td>
                   <td><a href="">诊后第2次随访</a></td>
                   <td><a href="">诊后第3次随访</a></td>
                   <td><a href="">诊后第4次随访</a></td>

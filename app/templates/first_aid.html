@@ -124,6 +124,6 @@ function loadScript() {
 window.onload = loadScript;  
 
 // 修改头像
-$('div.sidebar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
+$('div.sidebar img').attr('src', "{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ current_user.avatar }}"));
 </script>
 {% endblock %}

@@ -51,11 +51,13 @@
                     <img src="static/uploads/avatars/{{ user.avatar }}" style="width:100px;height:100px" class="img-rounded">
                 </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ g.user.height }}cm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;{{ g.user.weight }}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-map-marker"
+                      aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ current_user.height }}cm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;{{ current_user.weight }}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span
+                    class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                 <div class="pull-right">
-                {% if user.id == g.user.id %}
+                    {% if user.id == current_user.id %}
                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>&nbsp;
-                <a href="{{url_for('edit')}}" >编辑您的个人资料</a>
+                        <a href="{{ url_for('main.edit') }}">编辑您的个人资料</a>
                 {% endif %}
                 </div>
                 <br><br>

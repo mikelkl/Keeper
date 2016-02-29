@@ -1,82 +1,26 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
-
-from app import app, db, lm
-from config import UPLOAD_FOLDER, ALLOWED_EXTENSIONS
-from flask import render_template, flash, redirect, url_for, request, g
-from flask.ext.login import login_user, logout_user, current_user, login_required
-from .forms import LoginForm
-from .models import User, Treatment, ECG
+from config import Config
+from flask import render_template, flash, redirect, url_for, request
+from flask.ext.login import login_required, current_user
+from . import main
+from .. import db
+from ..models import User, Treatment, ECG
 
 
-@app.before_request
-def before_request():
-    g.user = current_user
-    if g.user.is_authenticated:
-        g.user.last_seen = datetime.utcnow()
-        db.session.add(g.user)
-        db.session.commit()
-
-
-@app.route('/')
-@app.route('/index')
+@main.route('/')
+@main.route('/index')
 def index():
     return render_template('index.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    # # 若用户已登录，重定向到index
-    # if g.user is not None and g.user.is_authenticated:
-    #     flash('请勿重复登录！')
-    #     # return redirect(url_for('index'))
-    #
-    # # 若用户未登录，重定向到index
-    # if request.method == 'POST':
-    #     user = User.query.filter_by(
-    #         email=request.form.get('email'), password=request.form.get('password')).first()
-    #
-    #     if user is None:
-    #         flash('用户名或密码错误！请重新输入！')
-    #         return redirect(url_for('login'))
-    #
-    #     remember_me = False
-    #     if request.form.get('remember_me'):
-    #         # print request.form.get('remember_me')
-    #         remember_me = True
-    #     login_user(user, remember=remember_me)
-    #     return redirect(url_for('patient'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(
-            email=form.email.data, password=form.password.data).first()
-        if user is not None:
-            login_user(user, form.remember_me.data)
-            return redirect(url_for('patient'))
-    if request.method == 'POST':
-        flash('用户名或密码错误！请重新输入！')
-    return render_template('login.html', form=form)
-
-
-@lm.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-
-
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
-
-
-@app.route('/first_aid')
+@main.route('/first_aid')
 @login_required
 def first_aid():
     return render_template('first_aid.html', jd=103.593302, wd=30.332618)
 
 
-@app.route('/record/<file_name>/<num>')
+@main.route('/record/<file_name>/<num>')
 @login_required
 def record(file_name="", num=""):
     ecgs = ECG.query.all()
@@ -93,30 +37,30 @@ def record(file_name="", num=""):
     return render_template('record.html', ecgs=ecgs, id=num, data=data, date=ecg.date, time=ecg.time)
 
 
-@app.route('/doctor')
+@main.route('/doctor')
 @login_required
 def doctor():
-    if g.user == None:
+    if current_user == None:
         flash('User ' + g.nickname + ' not found.')
         return redirect(url_for('index'))
     return render_template('doctor.html',
-                           user=g.user)
+                           user=current_user)
 
 
-@app.route('/patient')
+@main.route('/patient')
 @login_required
 def patient():
-    if g.user == None:
+    if current_user == None:
         flash('User ' + g.nickname + ' not found.')
         return redirect(url_for('index'))
     return render_template('patient.html',
-                           user=g.user)
+                           user=current_user)
 
 
-@app.route('/treatment_record/<int:num>')
+@main.route('/treatment_record/<int:num>')
 @login_required
 def treatment_record(num):
-    if g.user == None:
+    if current_user == None:
         flash('User ' + g.nickname + ' not found.')
         return redirect(url_for('index'))
     user = User.query.filter_by(id=2).first()
@@ -133,36 +77,36 @@ def treatment_record(num):
                                 '因反复喘息40余年，咳嗽、咯痰20余年，心慌气急3年，复发并加重半天，在当地诊所予抗炎、止咳、扩张血管等治疗无好转来诊，体格检查： T 37.7℃，P 134次/分，R 27次/分，BP 112/72mmHg。口唇发绀，颈静脉怒张，胸廓呈桶状，颜面及双下肢水肿，心电图：右心室肥大，右束支传导阻滞。考虑慢性肺源性心脏病，建议住院治疗。'))
     treatments.append(Treatment('王鹏医生', '内科', '主治医师', '2015-11-8', '四川大学华西医院', '莫绪旻',
                                 '反复喘促14年，双下肢水肿9年，腹胀1年，加重2天来诊，查见：P:111次/分，R:24次/分。端坐呼吸，二尖瓣面容。口唇紫绀，桶状胸，叩诊呈过清音，双肺呼吸音粗糙。心率125次/分，律不齐，心音强弱不等，二尖瓣膜听诊区可闻及隆隆样杂音。腹部膨隆，右侧肝区压痛明显。心电图：心房纤颤；轻度的ST-T异常。考虑风湿性心脏病，心房纤颤，二尖瓣关闭不全 ，心功能Ⅳ级。收住心内科治疗。'))
-    # print treatments[0] 
+    # print treatments[0]
     return render_template('treatment_record.html', user=user, treatment=treatments[num], num=num)
 
 
-@app.route('/follow_up_info')
+@main.route('/follow_up_info')
 @login_required
 def follow_up_info():
-    if g.user == None:
+    if current_user == None:
         flash('User ' + g.nickname + ' not found.')
         return redirect(url_for('index'))
     return render_template('follow_up_info.html')
 
 
-@app.route('/edit', methods=['GET', 'POST'])
+@main.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
     if request.method == 'POST':
         if request.form.get('nickname'):
-            g.user.nickname = request.form.get('nickname')
+            current_user.nickname = request.form.get('nickname')
         if request.form.get('about_me'):
-            g.user.about_me = request.form.get('about_me')
+            current_user.about_me = request.form.get('about_me')
         avatar = request.files.get('avatar')
         if avatar and allowed_file(avatar.filename):
             avatar_name = unicode(
-                g.user.id) + '.' + avatar.filename.rsplit('.', 1)[1]
+                current_user.id) + '.' + avatar.filename.rsplit('.', 1)[1]
             # avatar_url = os.path.join(UPLOAD_FOLDER, avatar_name)
-            avatar.save(UPLOAD_FOLDER + '/' + avatar_name)
-            g.user.avatar = avatar_name
+            avatar.save(Config.UPLOAD_FOLDER + '/' + avatar_name)
+            current_user.avatar = avatar_name
 
-        db.session.add(g.user)
+        db.session.add(current_user)
         db.session.commit()
         flash('您的修改已保存！')
         return redirect(url_for('edit'))
@@ -172,15 +116,15 @@ def edit():
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+           filename.rsplit('.', 1)[1] in Config.ALLOWED_EXTENSIONS
 
 
-@app.route('/about')
+@main.route('/about')
 def about():
     return render_template('about.html')
 
 
-@app.route('/upload', methods=['POST'])
+@main.route('/upload', methods=['POST'])
 def upload():
     # print data + '\n' + file_name
     if request.method == 'POST':

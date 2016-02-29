@@ -9,11 +9,13 @@
         {% include '_flash.html' %}
         <div class="row">
             <div class="well col-md-4 col-md-offset-4">
-                <form class="form-horizontal" action="{{ url_for('edit') }}" method="post" enctype=multipart/form-data>
+                <form class="form-horizontal" action="{{ url_for('main.edit') }}" method="post"
+                      enctype=multipart/form-data>
                     <div class="control-group col-md-8 col-md-offset-2">
                         <label class="control-label" for="nickname">昵称：</label>
                         <div class="controls">
-                            <input type="text" name="nickname" id="nickname" class="form-control" placeholder="{{ g.user.nickname }}" autofocus>
+                            <input type="text" name="nickname" id="nickname" class="form-control"
+                                   placeholder="{{ current_user.nickname }}" autofocus>
                             <span class="help-inline">{{ error }}</span><br>
                         </div>
                     </div>

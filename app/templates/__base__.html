@@ -38,13 +38,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url_for('index') }}"><b style="color:white;">Keeper-在线心电医疗平台</b></a>
+                <a class="navbar-brand" href="{{ url_for('main.index') }}"><b
+                        style="color:white;">Keeper-在线心电医疗平台</b></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('index') }}">主页</a></li>
+                    <li><a href="{{ url_for('main.index') }}">主页</a></li>
                     <li><a href="#">新特性</a></li>
-                    <li><a href="{{ url_for('about') }}">关于我们</a></li>
+                    <li><a href="{{ url_for('main.about') }}">关于我们</a></li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
@@ -55,34 +56,35 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
                         <li class="dropdown">
-                            <a href="{{ url_for('doctor') }}" class="dropdown-toggle" data-toggle="dropdown"
+                            <a href="{{ url_for('main.doctor') }}" class="dropdown-toggle" data-toggle="dropdown"
                                role="button" aria-expanded="false"><img src="" style="width:25px;height:25px"
-                                                                        class="img-rounded">{{ g.user.nickname }} <span
+                                                                        class="img-rounded">{{ current_user.nickname }} <span
                                     class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url_for('doctor') }}"><span class=" glyphicon glyphicon-info-sign"
-                                                                            aria-hidden="true"></span>&nbsp;&nbsp;个人资料</a>
+                                <li><a href="{{ url_for('main.doctor') }}"><span class=" glyphicon glyphicon-info-sign"
+                                                                                 aria-hidden="true"></span>&nbsp;&nbsp;个人资料</a>
                                 </li>
-                                <li><a href="{{ url_for('treatment_record', num=0) }}"><span
+                                <li><a href="{{ url_for('main.treatment_record', num=0) }}"><span
                                         class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;&nbsp;就诊記錄</a>
                                 </li>
-                                <li><a href="{{ url_for('record', file_name='1.txt', num=1) }}"><span
+                                <li><a href="{{ url_for('main.record', file_name='1.txt', num=1) }}"><span
                                         class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;&nbsp;心电图记录</a>
                                 </li>
-                                <li><a href="{{ url_for('first_aid') }}"><span class="glyphicon glyphicon-phone-alt"
-                                                                               aria-hidden="true"></span>&nbsp;&nbsp;一键急救</a>
+                                <li><a href="{{ url_for('main.first_aid') }}"><span
+                                        class="glyphicon glyphicon-phone-alt"
+                                        aria-hidden="true"></span>&nbsp;&nbsp;一键急救</a>
                                 </li>
                                 <li><a href="" data-toggle="modal" data-target=".bs-example-modal-sm"><span
                                         class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>&nbsp;&nbsp;添加就診记录</a>
                                 </li>
                                 <li class="divider" style="color:black;"></li>
-                                <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"
-                                                                            aria-hidden="true"></span>&nbsp;&nbsp;登出</a>
+                                <li><a href="{{ url_for('auth.logout') }}"><span class="glyphicon glyphicon-log-out"
+                                                                                 aria-hidden="true"></span>&nbsp;&nbsp;登出</a>
                                 </li>
                             </ul>
                         </li>
                     {% else %}
-                        <li><a href="{{ url_for('login') }}" style="color:white;"><b>登陆</b></a></li>
+                        <li><a href="{{ url_for('auth.login') }}" style="color:white;"><b>登陆</b></a></li>
                         <li><a href="#" style="color:white;"><b>註冊</b></a></li>
                     {% endif %}
                 </ul>
@@ -160,7 +162,7 @@
     });
 
     // 修改头像
-    $('#navbar img').attr('src',"{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ g.user.avatar }}"));
+    $('#navbar img').attr('src', "{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ current_user.avatar }}"));
 
     // 添加导航栏动画
     var elem = document.querySelector("nav");
