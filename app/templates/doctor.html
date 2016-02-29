@@ -70,7 +70,7 @@
                 </div>
                 <div class="well well-sm">
                 {% if user.last_seen %}
-                <p><em>最近登录：{{ user.last_seen }}</em></p>
+                    <p><em>最近登录：{{ moment(user.last_seen).fromNow(refresh=True) }}</em></p>
                 {% endif %}
                 </div>
                 </p>

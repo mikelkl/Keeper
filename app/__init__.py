@@ -4,6 +4,7 @@ import os
 from flask.ext.login import LoginManager
 from flask.ext.script import Manager
 from flask.ext.bootstrap import Bootstrap
+from flask.ext.moment import Moment
 from config import basedir, MAIL_SERVER, MAIL_PORT
 # from private_config import ADMINS, MAIL_PASSWORD, MAIL_USERNAME
 
@@ -15,6 +16,7 @@ db = SQLAlchemy(app)
 lm = LoginManager()
 manager = Manager(app)
 bootstrap = Bootstrap(app)
+moment = Moment(app)
 
 lm.init_app(app)
 lm.login_view = 'login'

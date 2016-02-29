@@ -146,7 +146,12 @@
 
 
 {% block scripts %}
+    {#  导入moment文件  #}
     {{ super() }}
+
+    {{ moment.include_moment() }}
+    {{ moment.lang('zh-cn') }}
+
     <!-- 导航栏动画 -->
     <script src="{{ url_for('static', filename='js/headroom.min.js') }}"></script>
     <script>
