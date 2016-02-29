@@ -10,7 +10,3 @@ SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
 UPLOAD_FOLDER = 'app/static/uploads/avatars'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-
-# mail server settings
-MAIL_SERVER = 'smtp.sina.com'
-MAIL_PORT = 465

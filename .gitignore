@@ -4,7 +4,6 @@ app/static/uploads
 tmp
 app.db
 test.db
-private_config.py
 app/static/img/cz.jpg
 app/static/img/lkl.png
 app/static/img/mxm.png
