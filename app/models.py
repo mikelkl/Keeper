@@ -1,4 +1,5 @@
 from app import db
+from datetime import datetime
 
 
 class Treatment(object):
@@ -17,8 +18,8 @@ class Treatment(object):
 class ECG(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     file_name = db.Column(db.String(100), index=True)
-    date = db.Column(db.String(20), index=True)
-    time = db.Column(db.String(30), index=True)
+    date = db.Column(db.String(20))
+    time = db.Column(db.String(30))
     def __repr__(self):
         return '<ECG %r>' % (self.file_name)
 
@@ -27,15 +28,16 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nickname = db.Column(db.String(64), index=True)
     sex = db.Column(db.String(5), index=True)
-    age = db.Column(db.String(5), index=True)
-    height = db.Column(db.String(8), index=True)
-    weight = db.Column(db.String(8), index=True)
+    age = db.Column(db.String(5))
+    height = db.Column(db.String(8))
+    weight = db.Column(db.String(8))
     email = db.Column(db.String(120), index=True, unique=True)
-    password = db.Column(db.String(20), index=True, unique=False)
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
+    password = db.Column(db.String(20), index=True)
     about_me = db.Column(db.String(140))
-    last_seen = db.Column(db.DateTime)
+    member_since = db.Column(db.DateTime(), default=datetime.utcnow)
+    last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar = db.Column(db.String(40))
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
 
     def is_authenticated(self):
         return True
