@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,65 +10,80 @@
     <link rel="icon" href="{{ url_for('static', filename='img/logo2.png') }}o">
 
     <title>登陆 - 在线心电医疗平台</title>
-      <link href="{{ bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap') }}" rel="stylesheet">
+    <link href="{{ bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
 
     <style>
-      .login {
-          width:940px; 
-          height:768px;
-          background: transparent url("{{ url_for('static', filename='img/imac.png') }}") no-repeat;
-          color: #000;
-          margin-bottom: 77px;
-          padding: 38px 38px 267px;
-          position: relative;
-          margin: 0 auto;
-      }
-        input:focus:invalid {
-            background: url('{{ url_for('static', filename='img/false.png') }}') no-repeat right;
+        .login {
+            width: 940px;
+            height: 768px;
+            background: transparent url("{{ url_for('static', filename='img/imac.png') }}") no-repeat;
+            color: #000;
+            margin-bottom: 77px;
+            padding: 38px 38px 267px;
+            position: relative;
+            margin: 0 auto;
         }
-        input:focus:valid {
-            background: url('{{ url_for('static', filename='img/right.png') }}') no-repeat right;
-        }
+
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div class="container">
+<div class="container">
 
-        {% include '_flash.html' %}
-      <div class="login">
-      <div class="login-screen">
-<!--       <div class="login-icon">
-        <img src="{{ url_for('static', filename='img/logo3.png') }}" alt="Welcome to Mail App" width="96" height="96">
-        <h4>Welcome to <b>Keeper</b></h4>
-      </div> -->
-      <div class="login-form">
-      <form action="{{ url_for('login') }}" method="post" class="form-signin">
-        <h1 class="form-signin-heading text-center">Keeper</h1>
-          <div class="input-group">
-              <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-              <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email 地址" required autofocus>
+    {% include '_flash.html' %}
+    <div class="login">
+        <div class="login-screen">
+            <div class="login-form">
+                {#                <form action="{{ url_for('login') }}" method="post" class="form-signin">#}
+                {#                    <h1 class="form-signin-heading text-center">Keeper</h1>#}
+                {#                    <div class="input-group">#}
+                {#                        <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-envelope"#}
+                {#                                                                                aria-hidden="true"></span></span>#}
+                {#                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email 地址"#}
+                {#                               required autofocus>#}
+                {#                    </div>#}
+                {#                    <div class="input-group">#}
+                {#                        <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-eye-close"#}
+                {#                                                                                aria-hidden="true"></span></span>#}
+                {#                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码"#}
+                {#                               required>#}
+                {#                    </div>#}
+                {#                    <div class="checkbox">#}
+                {#                        <label>#}
+                {#                            <input type="checkbox" name="remember_me"> 记住我#}
+                {#                        </label>#}
+                {#                    </div>#}
+                {#                    <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>#}
+                {#                </form>#}
+                <form method="POST" class="form-signin">
+                    {{ form.hidden_tag() }}
+                    <h1 class="form-signin-heading text-center">Keeper</h1>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-envelope"
+                                                                                aria-hidden="true"></span></span>
+                        {{ form.email(class="form-control", placeholder="Email 地址", id='inputEmail') }}
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-eye-close"
+                                                                                aria-hidden="true"></span></span>
+                        {{ form.password(id='inputPassword', class="form-control", placeholder="密码") }}
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            {{ form.remember_me() }}记住我
+                        </label>
+                    </div>
+                    {{ form.submit(class="btn btn-lg btn-block") }}
+                </form>
+            </div>
         </div>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></span>
-            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" name="remember_me"> 记住我
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
-      </form>
-      </div>
-      </div>
-      </div>
+    </div>
 
-    </div> <!-- /container -->
-    {% include '_footer.html' %}
-  </body>
+</div> <!-- /container -->
+{% include '_footer.html' %}
+</body>
 </html>
