@@ -1,5 +1,6 @@
 from app import db
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class Treatment(object):
@@ -32,7 +33,7 @@ class User(db.Model):
     height = db.Column(db.String(8))
     weight = db.Column(db.String(8))
     email = db.Column(db.String(120), index=True, unique=True)
-    password = db.Column(db.String(20), index=True)
+    password_hash = db.Column(db.String(128))
     about_me = db.Column(db.String(140))
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
@@ -53,6 +54,17 @@ class User(db.Model):
             return unicode(self.id)  # python 2
         except NameError:
             return str(self.id)  # python 3
+
+    @property
+    def password(self):
+        raise AttributeError('password is not a readble attribute')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
     @staticmethod
     def generate_fake(count=100):
