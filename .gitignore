@@ -2,8 +2,7 @@
 flask
 app/static/uploads
 tmp
-app.db
-test.db
+*.sqlite
 app/static/img/cz.jpg
 app/static/img/lkl.png
 app/static/img/mxm.png
