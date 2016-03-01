@@ -1,5 +1,7 @@
-from app import db
 from datetime import datetime
+
+from app import db
+from flask.ext.login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -16,16 +18,18 @@ class Treatment(object):
     def __repr__(self):
         return '<Treatment %r>' % (self.doctor)
 
+
 class ECG(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     file_name = db.Column(db.String(100), index=True)
     date = db.Column(db.String(20))
     time = db.Column(db.String(30))
+
     def __repr__(self):
         return '<ECG %r>' % (self.file_name)
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nickname = db.Column(db.String(64), index=True)
     sex = db.Column(db.String(5), index=True)
@@ -39,21 +43,6 @@ class User(db.Model):
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar = db.Column(db.String(40))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-
-    def is_authenticated(self):
-        return True
-
-    def is_active(self):
-        return True
-
-    def is_anonymous(self):
-        return False
-
-    def get_id(self):
-        try:
-            return unicode(self.id)  # python 2
-        except NameError:
-            return str(self.id)  # python 3
 
     @property
     def password(self):

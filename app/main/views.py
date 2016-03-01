@@ -125,6 +125,7 @@ def about():
 
 
 @main.route('/upload', methods=['POST'])
+@login_required
 def upload():
     # print data + '\n' + file_name
     if request.method == 'POST':
