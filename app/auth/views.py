@@ -41,14 +41,13 @@ def login():
     #     return redirect(url_for('patient'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(
-            email=form.email.data, password=form.password.data).first()
-        if user is not None:
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is not None and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
             return redirect(url_for('main.patient'))
     if request.method == 'POST':
         flash('用户名或密码错误！请重新输入！')
-    return render_template('login.html', form=form)
+    return render_template('auth/login.html', form=form)
 
 
 @login_manager.user_loader
