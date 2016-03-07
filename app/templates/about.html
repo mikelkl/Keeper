@@ -1,0 +1,181 @@
+{% extends '__base__.html' %}
+
+{% block title %}关于我们{% endblock %}
+
+{% block head %}
+    {{ super() }}
+
+    <link href="{{ url_for('static', filename='css/about.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block page_content %}
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="first-slide" src="{{ url_for('static', filename='img/slide1.jpg') }}" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>运营计划</h1>
+                        <p>第一阶段 <code>(近一年)</code> 成立公司，完善产品，将产品推向市场，逐步建设供应链。</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">和我们合作</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="second-slide" src="{{ url_for('static', filename='img/slide2.jpg') }}" alt="Second slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>运营计划</h1>
+                        <p>第二阶段 <code>(1-3年)</code> 加强供应链，降低成本，建立销售渠道，提供广告投放渠道。<br>
+                            优化算法，推出二代产品，提高数据采集和心电分析的准确性</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">和我们合作</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="third-slide" src="{{ url_for('static', filename='img/slide3.jpg') }}" alt="Third slide">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>运营计划</h1>
+                        <p>第三阶段 <code>(3-5年)</code> 加强供应链，降低成本，建立销售渠道，提供广告投放渠道。<br>
+                            优化算法，推出二代产品，提高数据采集和心电分析的准确性</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">和我们合作</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div><!-- /.carousel -->
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-3">
+                <img class="img-circle" src="{{ url_for('static', filename='img/mxm.png') }}"
+                     alt="Generic placeholder image" width="140" height="140">
+                <h2>莫旭旻</h2>
+                <p>四川大学软件学院 2013 级卓越班<br>国家级科研项目负责人<br>“中国软件杯” 全国二等奖<br>“互联网+”创新创业大赛 全国铜奖<br>
+                    “互联网+”创新创业大赛 四川省金奖<br>
+                    第六届“大学生服务外包大赛” 三等奖</p>
+                <p><a class="btn btn-default" href="#1" role="button">负责人 &raquo;</a></p>
+            </div>
+            <div class="col-lg-3">
+                <img class="img-circle" src="{{ url_for('static', filename='img/lkl.png') }}"
+                     alt="Generic placeholder image" width="140" height="140">
+                <h2>刘康龙</h2>
+                <p>四川大学软件学院2013级<br>“中国软件杯” 全国二等奖</p><br><br><br><br>
+                <p><a class="btn btn-default" href="#2" role="button">服务端开发 &raquo;</a></p>
+            </div>
+            <div class="col-lg-3">
+                <img class="img-circle" src="{{ url_for('static', filename='img/yjk.png') }}"
+                     alt="Generic placeholder image" width="140" height="140">
+                <h2>应俊康</h2>
+                <p>四川大学软件学院2013 级卓越班<br>“中国软件杯”全国二等奖<br>
+                    “互联网+”创新创业大赛 全国铜奖<br><br><br><br></p>
+                <p><a class="btn btn-default" href="#3" role="button">移动端开发 &raquo;</a></p>
+            </div><!-- /.col-lg-3 -->
+            <div class="col-lg-3">
+                <img class="img-circle" src="{{ url_for('static', filename='img/cz.jpg') }}"
+                     alt="Generic placeholder image" width="140" height="140">
+                <h2>陈钊</h2>
+                <p>四川大学软件学院2013级创新班<br><br><br><br><br><br></p>
+                <p><a class="btn btn-default" href="#4" role="button">PC端开发 &raquo;</a></p>
+            </div>
+        </div><!-- /.row -->
+
+
+        <!-- START THE FEATURETTES -->
+
+        <hr id="1" class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">First featurette heading. <span
+                        class="text-muted">It'll blow your mind.</span></h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+                    tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive center-block"
+                     src="{{ url_for('static', filename='img/mxm.png') }}" alt="Generic placeholder image">
+            </div>
+        </div>
+
+        <hr id="2" class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 col-md-push-5">
+                <h2 class="featurette-heading">Oh yeah, it's that good. <span
+                        class="text-muted">See for yourself.</span></h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+                    tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5 col-md-pull-7">
+                <img class="featurette-image img-responsive center-block"
+                     src="{{ url_for('static', filename='img/lkl.png') }}" alt="Generic placeholder image">
+            </div>
+        </div>
+
+        <hr id="3" class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+                    tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive center-block"
+                     src="{{ url_for('static', filename='img/yjk.png') }}" alt="Generic placeholder image">
+            </div>
+        </div>
+
+        <hr id="4" class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
+                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
+                    tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive center-block"
+                     src="{{ url_for('static', filename='img/cz.jpg') }}" alt="Generic placeholder image">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+
+    </div><!-- /.container -->
+
+{% endblock %}

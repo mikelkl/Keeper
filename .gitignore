@@ -1,31 +1,16 @@
-# My configurations:
-flask
-app/static/uploads
-tmp
-data-dev.sqlite
-data-test.sqlite
-app/static/img/cz.jpg
-app/static/img/lkl.png
-app/static/img/mxm.png
-app/static/img/slide1.jpg
-app/static/img/slide2.jpg
-app/static/img/slide3.jpg
-app/static/img/wooyun.jpg
-app/static/img/yjk.png
-app/templates/about.html
-
-# Windows:
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Python:
 *.py[cod]
-*.so
-*.egg
-*.egg-info
-dist
-build
 
-#PyCharm
+# SQLite databases
+*.sqlite
+
+# Virtual environment
+flask
+
+# PyCharm
 .idea
+
+# 上传数据
+app/static/uploads
+
+# 临时文件夹
+tmp

@@ -42,7 +42,7 @@ def record(file_name="", num=""):
 def doctor():
     if current_user == None:
         flash('User ' + g.nickname + ' not found.')
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     return render_template('doctor.html',
                            user=current_user)
 
@@ -52,7 +52,7 @@ def doctor():
 def patient():
     if current_user == None:
         flash('User ' + g.nickname + ' not found.')
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     return render_template('patient.html',
                            user=current_user)
 
@@ -62,7 +62,7 @@ def patient():
 def treatment_record(num):
     if current_user == None:
         flash('User ' + g.nickname + ' not found.')
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     user = User.query.filter_by(id=2).first()
     treatments = []
     treatments.append(Treatment('陈钊医生', '儿科', '主治医师', '2015-11-24', '四川大学华西医院', '莫绪旻',
@@ -86,7 +86,7 @@ def treatment_record(num):
 def follow_up_info():
     if current_user == None:
         flash('User ' + g.nickname + ' not found.')
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
     return render_template('follow_up_info.html')
 
 
@@ -109,7 +109,7 @@ def edit():
         db.session.add(current_user)
         db.session.commit()
         flash('您的修改已保存！')
-        return redirect(url_for('edit'))
+        return redirect(url_for('main.edit'))
 
     return render_template('edit.html')
 
