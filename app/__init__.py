@@ -1,27 +1,11 @@
 # -*- coding: utf-8 -*-
-# from flask import Flask
-# from flask.ext.bootstrap import Bootstrap
-# from flask.ext.login import LoginManager
-# from flask.ext.moment import Moment
-# from flask.ext.sqlalchemy import SQLAlchemy
-#
-# app = Flask(__name__)
-# app.config.from_object('config')
-#
-# db = SQLAlchemy(app)
-# lm = LoginManager()
-# bootstrap = Bootstrap(app)
-# moment = Moment(app)
-#
-# lm.init_app(app)
-# lm.login_view = 'login'
 
 from config import config
 from flask import Flask
 from flask.ext.bootstrap import Bootstrap
+from flask.ext.login import LoginManager
 from flask.ext.moment import Moment
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager
 
 bootstrap = Bootstrap()
 moment = Moment()
@@ -41,11 +25,16 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
 
-    # 附加路由和自定义的错误页面
+    # 主要功能的蓝图
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    # 认证功能的蓝图
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
+
+    # 实现REST API,为移动端提供数据的蓝图
+    from .api_1_0 import api as api_1_0_blueprint
+    app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
 
     return app
