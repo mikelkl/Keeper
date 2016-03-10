@@ -1,6 +1,7 @@
 from datetime import datetime
-from flask import url_for
+
 from app import db
+from flask import url_for
 from flask.ext.login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -72,6 +73,24 @@ class User(UserMixin, db.Model):
                 db.session.commit()
             except:
                 db.session.rollback()
+
+    def to_json(self):
+        json_user = {
+            'url': url_for('api.get_user', id=self.id, _external=True),
+            'nickname': self.nickname,
+            'sex': self.sex,
+            'age': self.age,
+            'height': self.height,
+            'weight': self.weight,
+            'email': self.email,
+            'about_me': self.about_me,
+            'member_since': self.member_since,
+            'last_seen': self.last_seen,
+            'avatar': url_for('static', filename='uploads/avatars/%s' % self.avatar, _external=True)
+        }
+        return json_user
+
+
 
     def __repr__(self):
         return '<User %r>' % (self.nickname)
