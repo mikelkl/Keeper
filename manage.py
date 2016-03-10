@@ -1,4 +1,5 @@
 #!flask/bin/python
+# coding=utf8
 import os
 from app import create_app, db
 from app.models import User, ECG, Treatment, Post
