@@ -28,7 +28,7 @@ def test():
     unittest.TextTestRunner(verbosity=2).run(tests)
 
 
-@manager._commands
+@manager.command
 def deploy():
     """Run deployment tests."""
 
