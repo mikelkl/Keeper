@@ -9,21 +9,48 @@
     <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
     <style>
-    .navbar-default .navbar-nav > li > a:hover {
-        background-color: #0482ba;
-        color: #fff;
-    }
-    .nav > li:hover .dropdown-menu {display: block;}
-    .headroom {position: fixed;top: 0;left: 0;right: 0;transition: all .5s ease-in-out;}
-    .headroom--unpinned {top: -100px;}
-    .headroom--pinned {top: 0;}
-    .navbar-default .navbar-nav > li > a {
-        color: #fff;
-    }
+        .navbar-default .navbar-nav > li > a:hover {
+            color: #e9f0ed;
+        }
 
-    .modal {
-        padding-top: 10%;
-    }
+        .nav > li:hover .dropdown-menu {
+            display: block;
+        }
+
+        .headroom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: all .5s ease-in-out;
+        }
+
+        .headroom--unpinned {
+            top: -100px;
+        }
+
+        .headroom--pinned {
+            top: 0;
+        }
+
+        .navbar-default .navbar-nav > li > a {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .modal {
+            padding-top: 10%;
+        }
+
+        .btn-primary {
+            background-color: transparent;
+            border-color: rgba(255, 255, 255, 0.52);
+        }
+
+        .btn-primary:hover {
+            background-color: RGBA(255, 255, 255, 0.38);
+            border-color: rgba(255, 255, 255, 0.52);
+        }
     </style>
 {% endblock %}
 
@@ -51,7 +78,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="搜索……">
                     </div>
-                    <button type="submit" style="color:white;" class="btn btn-primary">搜索</button>
+                    <button type="submit" style="color:white;" class="btn btn-primary"><b>搜索</b></button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
@@ -157,19 +184,19 @@
     <!-- 导航栏动画 -->
     <script src="{{ url_for('static', filename='js/headroom.min.js') }}"></script>
     <script>
-    $(document).ready(function(){
-        $(document).off('click.bs.dropdown.data-api');
-    });
+        $(document).ready(function () {
+            $(document).off('click.bs.dropdown.data-api');
+        });
 
-    // 修改头像
-    $('#navbar img').attr('src', "{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ current_user.avatar }}"));
+        // 修改头像
+        $('#navbar img').attr('src', "{{ url_for('static', filename='uploads/avatars/xxx') }}".replace('xxx', "{{ current_user.avatar }}"));
 
-    // 添加导航栏动画
-    var elem = document.querySelector("nav");
-    var headroom = new Headroom(elem, {
-        "tolerance": 5,
-        "offset": 500,
-    });
-    headroom.init();
+        // 添加导航栏动画
+        var elem = document.querySelector("nav");
+        var headroom = new Headroom(elem, {
+            "tolerance": 5,
+            "offset": 500,
+        });
+        headroom.init();
     </script>
 {% endblock %}
