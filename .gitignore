@@ -4,6 +4,7 @@
 *.sqlite
 
 # Virtual environment
+venv
 flask
 
 # PyCharm
