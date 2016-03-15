@@ -67,7 +67,11 @@ class User(UserMixin, db.Model):
                      nickname=forgery_py.internet.user_name(),
                      password=forgery_py.lorem_ipsum.word(),
                      about_me=forgery_py.lorem_ipsum.sentence(),
-                     member_since=forgery_py.date.date(True))
+                     member_since=forgery_py.date.date(True),
+                     sex=forgery_py.personal.gender(),
+                     height='170',
+                     weight='70',
+                     age='20')
             db.session.add(u)
             try:
                 db.session.commit()
@@ -89,8 +93,6 @@ class User(UserMixin, db.Model):
             'avatar': url_for('static', filename='uploads/avatars/%s' % self.avatar, _external=True)
         }
         return json_user
-
-
 
     def __repr__(self):
         return '<User %r>' % (self.nickname)
