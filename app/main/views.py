@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from config import Config
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, current_app, abort
 from flask.ext.login import login_required, current_user
 from . import main
 from .. import db
@@ -145,3 +145,14 @@ def upload():
     return 'sz'
     # if file:
     #     file.save( 'app/static/uploads/data/' + file.filename)
+
+
+@main.route('/shoudown')
+def server_shutdown():
+    if not current_app.testing:
+        abort(404)
+    shut_down = request.environ.get('werkzeug.server.shutdown')
+    if not shut_down:
+        abort(500)
+    shut_down()
+    return 'Shutting down...'

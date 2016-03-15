@@ -13,11 +13,6 @@ class FlaskClientTestCase(unittest.TestCase):
         self.app_context = self.app.app_context()
         self.app_context.push()
         db.create_all()
-        u = User()
-        u.email = '123@qq.com'
-        u.password = '888'
-        db.session.add(u)
-        db.session.commit()
         self.client = self.app.test_client(use_cookies=True)
 
     def tearDown(self):
@@ -30,6 +25,12 @@ class FlaskClientTestCase(unittest.TestCase):
         self.assertTrue(re.search(b'Keeper', response.data))
 
     def login(self):
+        # create a test account
+        u = User()
+        u.email = '123@qq.com'
+        u.password = '888'
+        db.session.add(u)
+        db.session.commit()
         # login with a test account
         return self.client.post(url_for('auth.login'), data={
             'email': '123@qq.com',
