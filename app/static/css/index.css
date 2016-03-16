@@ -56,14 +56,14 @@ footer {
 
 @media (max-width: 768px) {
     .site-wrapper {
-        margin-top: 50px;
+        /*margin-top: 50px;*/
         height: auto
     }
 }
 
 .site-wrapper-inner {
     display: table-cell;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .cover-container {
