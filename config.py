@@ -8,8 +8,10 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SQLALCHEMY_RECORD_QUERIES = True
     UPLOAD_FOLDER = 'app/static/uploads/avatars'
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+    FLASKY_SLOW_DB_QUERY_TIME = 0.5
 
     @staticmethod
     def init_app(app):

@@ -3,6 +3,7 @@
 from config import Config
 from flask import render_template, flash, redirect, url_for, request, current_app, abort
 from flask.ext.login import login_required, current_user
+from flask.ext.sqlalchemy import get_debug_queries
 from . import main
 from .. import db
 from ..models import User, Treatment, ECG
@@ -156,3 +157,14 @@ def server_shutdown():
         abort(500)
     shut_down()
     return 'Shutting down...'
+
+
+@main.after_app_request
+def after_request(response):
+    for query in get_debug_queries():
+        if query.duration >= current_app.config['FLASKY_SLOW_DB_QUERY_TIME']:
+            current_app.logger.warning(
+                'Slow query: %s\nParameters: %s\nDuration: %fs\nContext: %s\n'
+                % (query.statement, query.parameters, query.duration,
+                   query.context))
+    return response
