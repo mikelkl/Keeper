@@ -6,6 +6,7 @@ from flask.ext.bootstrap import Bootstrap
 from flask.ext.login import LoginManager
 from flask.ext.moment import Moment
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask_cors import CORS, cross_origin
 
 bootstrap = Bootstrap()
 moment = Moment()
@@ -24,6 +25,8 @@ def create_app(config_name):
     moment.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
+
+    cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:8080"}})
 
     # 主要功能的蓝图
     from .main import main as main_blueprint
