@@ -35,7 +35,8 @@ def record(file_name="", num=""):
     date = 0
     time = 0
     ecg = ECG.query.filter_by(id=num).first()
-    return render_template('record.html', ecgs=ecgs, id=num, data=data, date=ecg.date, time=ecg.time)
+    # return render_template('record.html', ecgs=ecgs, id=num, data=data, date=ecg.date, time=ecg.time)
+    return render_template('record.html', ecgs=ecgs, id=num, data=data)
 
 
 @main.route('/doctor')
